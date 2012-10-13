@@ -1,0 +1,1027 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"co",
+				"co2labeling"
+			],
+			[
+				"cu",
+				"cursor:   (property)"
+			],
+			[
+				"tex",
+				"text-decoration:   (property)"
+			],
+			[
+				"light",
+				"lightblue"
+			],
+			[
+				"url",
+				"url(image-url.gif)"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"is",
+				"isFacebookTab"
+			],
+			[
+				"new",
+				"newSrc"
+			],
+			[
+				"padding-",
+				"padding-bottom"
+			],
+			[
+				"news",
+				"newsElement"
+			],
+			[
+				"img",
+				"imgSize"
+			],
+			[
+				"border-",
+				"border-bottom"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"tage",
+				"target"
+			],
+			[
+				"target",
+				"target"
+			],
+			[
+				"toggle",
+				"toggleButton"
+			],
+			[
+				"close",
+				"closedBanner"
+			],
+			[
+				"has",
+				"hasClass"
+			],
+			[
+				"sea",
+				"searchTerm"
+			],
+			[
+				"path",
+				"pathname"
+			],
+			[
+				"current",
+				"currentPage"
+			],
+			[
+				"index",
+				"indexOf"
+			],
+			[
+				"cont",
+				"containerLeft"
+			],
+			[
+				"left",
+				"leftEdge"
+			],
+			[
+				"reu",
+				"return"
+			],
+			[
+				"contain",
+				"containerRight"
+			],
+			[
+				"use",
+				"useMasonry"
+			],
+			[
+				"prev",
+				"previousBrick"
+			],
+			[
+				"previous",
+				"previousBrick"
+			],
+			[
+				"reset",
+				"resetMasonryPolaroids"
+			],
+			[
+				"link",
+				"linkify"
+			],
+			[
+				"off",
+				"offset"
+			],
+			[
+				"get",
+				"getWidthInPercent"
+			],
+			[
+				"pre",
+				"previousBrick"
+			],
+			[
+				"sub",
+				"substring"
+			],
+			[
+				"add",
+				"addClass"
+			],
+			[
+				"stop",
+				"stopPropagation"
+			],
+			[
+				"overlay",
+				"overlayContainer"
+			],
+			[
+				"actua",
+				"actualWidth"
+			],
+			[
+				"rem",
+				"remove"
+			],
+			[
+				"remove",
+				"removeClass"
+			],
+			[
+				"twitter",
+				"twitterBox"
+			],
+			[
+				"re",
+				"reset"
+			],
+			[
+				"wall",
+				"wallreload"
+			],
+			[
+				"over",
+				"overflowingTweetWidth"
+			],
+			[
+				"me",
+				"metadataBlockHeight"
+			],
+			[
+				"meta",
+				"metadataBlock"
+			],
+			[
+				"searc",
+				"searchTerm"
+			],
+			[
+				"po",
+				"pop"
+			],
+			[
+				"pola",
+				"polaroidWidth"
+			],
+			[
+				"pol",
+				"polaroidWidth"
+			],
+			[
+				"a",
+				"a>  (element)"
+			],
+			[
+				"name",
+				"@name"
+			],
+			[
+				"p",
+				"p>  (element)"
+			],
+			[
+				"class",
+				"class=  (attribute)"
+			],
+			[
+				"ul",
+				"ul>  (element)"
+			],
+			[
+				"h3",
+				"h3>  (element)"
+			],
+			[
+				"id",
+				"@id"
+			],
+			[
+				"deep",
+				"deepRed"
+			],
+			[
+				"dee",
+				"deepRed"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.php",
+			"settings":
+			{
+				"buffer_size": 755,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "studio.php",
+			"settings":
+			{
+				"buffer_size": 1483,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "project.php",
+			"settings":
+			{
+				"buffer_size": 763,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 299.0,
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Discover Packages"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Discover Packages"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"disc",
+				"Package Control: Discover Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 504.0
+	},
+	"console":
+	{
+		"height": 115.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/espy/Sites/mbshare_productizer/config/database.yml",
+		"/Users/espy/Sites/mbshare_productizer/app/models/app.rb",
+		"/Users/espy/Library/Application Support/Postgres/var/postgresql.conf",
+		"/Users/espy/Sites/mbshare_productizer/config/environment.rb",
+		"/Users/espy/Sites/mbshare_productizer/config/environments/development.rb",
+		"/Users/espy/Sites/mbshare_productizer/db/resources.json",
+		"/Users/espy/Sites/mbshare_productizer/app/assets/javascripts/edit.js",
+		"/Users/espy/Sites/mbshare_productizer/app/views/cities/index.html.erb",
+		"/Users/espy/Sites/mbshare_productizer/app/views/moods/index.html.erb",
+		"/Users/espy/Sites/mbshare_productizer/app/views/vehicles/index.html.erb",
+		"/Users/espy/Sites/mbshare_productizer/app/views/homes/_resources.html.erb",
+		"/Users/espy/Sites/mbshare_arbeitsdaten/mbshare/app/assets/stylesheets/_base.scss",
+		"/Users/espy/Sites/mbshare_productizer/app/assets/javascripts/application_editor.widgets.js",
+		"/Users/espy/Sites/mbshare_productizer/app/assets/javascripts/productorizer.js",
+		"/Users/espy/Sites/mbshare_arbeitsdaten/mbshare/app/assets/stylesheets/app_editor.scss",
+		"/Users/espy/Sites/mbshare_arbeitsdaten/mbshare/app/assets/stylesheets/_app_config_backend.scss",
+		"/Users/espy/Sites/mbshare_productizer/app/assets/javascripts/application_editor.js",
+		"/Users/espy/Sites/mbshare_productizer/app/controllers/share_images_controller.rb",
+		"/Users/espy/Sites/mbshare_productizer/app/controllers/homes_controller.rb",
+		"/Users/espy/Sites/mbshare_productizer/app/models/teaser.rb",
+		"/Users/espy/Sites/mbshare_arbeitsdaten/mbshare/app/assets/stylesheets/application.scss",
+		"/Users/espy/Sites/mbshare_productizer/app/views/teasers/edit.html.erb",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/polaroid.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/login.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/displayPhoto.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/page.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/gallery.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/common/sliding.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/photo.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/Exception/error.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/piktomat.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/photoSession.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/gettoken.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/base.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/republicaWhichDay.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/loggedOut.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/loggedIn.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/facebookTab.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/timeline.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/news.html.twig",
+		"/Users/espy/02 - Arbeit/SPD/3_HTML/current/js/utilities.js",
+		"/Users/espy/02 - Arbeit/SPD/3_HTML/current/js/application.js",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/user.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Controller/User/FacebookTabController.php",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Controller/User/DefaultController.php",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/default.html.twig",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Controller/User/PageController.php",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Controller/User/NewsController.php",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Controller/User/GalleryController.php",
+		"/Users/espy/Sites/tweetomat/static/index.html",
+		"/Users/espy/Sites/tweetomat/tweetomat/app/config/parameters.ini",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Controller/User/UserController.php",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Entity/Tweetomat/PhotoSession.php",
+		"/private/etc/apache2/extra/httpd-vhosts.conf",
+		"/Users/espy/Sites/tweetomat/tweetomat/app/config/config.yml",
+		"/Users/espy/Sites/tweetomat/static/js/tweetomat.js",
+		"/Users/espy/Sites/tweetomat/tweetomat/app/logs/prod.log",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/config/routing/user.yml",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Controller/User/UserAccessController.php",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Service/WebContent.php",
+		"/Users/espy/Sites/tweetomat/static/source/css/global.less",
+		"/Users/espy/Sites/tweetomat/static/source/css/layout.less",
+		"/private/etc/php.ini",
+		"/private/etc/apache2/httpd.conf",
+		"/Users/espy/Sites/tweetomat/tweetomat/app/config/parameters.ini.dist",
+		"/Users/espy/Sites/tweetomat/tweetomat/vendor/doctrine-mongodb/lib/Doctrine/MongoDB/Connection.php",
+		"/usr/etc/php.ini",
+		"/Users/espy/Sites/tweetomat/static/source/css/global.css",
+		"/Users/espy/Sites/tweetomat/static/css/global.css",
+		"/Users/espy/Sites/tweetomat/static/css/layout.css",
+		"/Users/espy/Sites/tweetomat/tweetomat/web/app_dev.php",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/translations/messages.de.xliff",
+		"/Users/espy/Sites/tweetomat/tweetomat/src/Vodafone/TweetomatBundle/Resources/views/User/header.html.twig",
+		"/usr/bin/syslog",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/espy/Downloads/Recorded.torrent",
+		"/Users/espy/Sites/nabis/malte/js/nabis.js",
+		"/Users/espy/Sites/IKEA/source_backup/js/ikea_test.js",
+		"/Users/espy/Sites/IKEA 01/source/js/ikea_test.js",
+		"/Volumes/Whiskie Dev/css/style.css",
+		"/Volumes/Whiskie Dev/head.php",
+		"/Volumes/Whiskie Dev/dashboard.php",
+		"/Users/espy/Sites/shakehands/source/css/style.css.sass",
+		"/Users/espy/Sites/roller/roller/source/js/code.js",
+		"/Users/espy/Sites/roller/roller/work_files/todo.txt",
+		"/Users/espy/Documents/previiew-feedback.txt",
+		"/Users/espy/Sites/shakehands/source/index.html",
+		"/Users/espy/Sites/shakehands/source/js/script.js",
+		"/Users/espy/Sites/shakehands/source/humans.txt",
+		"/Users/espy/Sites/IKEA 01/source/css/style.css",
+		"/Users/espy/Sites/nabis/source/js/nabis.js",
+		"/Users/espy/Sites/nabis/source/css/style.css",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/User/Base File.sublime-settings",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/SublimeCodeIntel/.codeintel/config",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/SublimeCodeIntel/README.markdown",
+		"/Users/espy/Sites/shakehands/source/.codeintel/config",
+		"/Users/espy/Sites/IKEA/source/js/ikea_test.js",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/Prefixr/Default (OSX).sublime-keymap",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/ZenCoding/Default (OSX).sublime-keymap",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/ZenCoding/README.creole",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/ZenCoding/zen-coding.sublime-settings",
+		"/Users/espy/Library/Application Support/Sublime Text 2/Packages/ZenCoding/test.html",
+		"/Users/espy/Sites/shakehands/source/css/_style.css",
+		"/Users/espy/Sites/shakehands/source/css/style.sass"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"feed",
+			"co_2",
+			"sharing",
+			"dialog",
+			"co2labeling",
+			"nav",
+			"tools-button",
+			"co2_labeling",
+			"before",
+			"log",
+			"middle",
+			"center",
+			"righ",
+			"url(",
+			"twitterLogURL",
+			"date",
+			"share",
+			"class=\"shareFace",
+			"shareFacebook",
+			"facebook",
+			"meta",
+			"	\n",
+			"%}\n",
+			"facebook",
+			"touchdevice",
+			"facebook",
+			"twitterbox",
+			"pollForNewPhotoSession",
+			"youtu",
+			"reversible",
+			"polaroid",
+			"height",
+			"console",
+			"99%",
+			"console",
+			"99%",
+			"news",
+			"99%",
+			"news",
+			"usemason",
+			"99%",
+			"100%",
+			"masonry",
+			"lastinrow",
+			"98%",
+			"96%",
+			"lastin",
+			"updateOrientation",
+			"log",
+			"max-wi",
+			"rounded",
+			"tr",
+			"table",
+			"pagina",
+			"promobird",
+			"polaroid",
+			"last",
+			"@teal",
+			"bgcolo",
+			"url",
+			"usemason",
+			"claim",
+			"twitter",
+			"url",
+			"youtube",
+			"unfno",
+			"pagina",
+			"yout",
+			"piktomat",
+			"approve",
+			"appro",
+			"approve",
+			"count",
+			"buttonize",
+			"confirm",
+			"youtu",
+			"reversible",
+			"polaroid",
+			"back",
+			"polaroid",
+			"url",
+			"form",
+			"b",
+			"className",
+			"response",
+			"pagination",
+			"usemasonry",
+			"eventbanner",
+			"success",
+			"poll",
+			"twitter",
+			"console",
+			"twitter",
+			"narrowseparatorafter",
+			"*",
+			"nav",
+			"eventbann",
+			".hidden",
+			"hidden",
+			"twitter.com",
+			"top",
+			"eventbox",
+			"polaroid",
+			"twitterbox",
+			"twitter",
+			"(even",
+			"eventbox",
+			"description",
+			"lastfour",
+			"quadblock",
+			"lastin",
+			"usemasonry",
+			"descript",
+			"onetime",
+			"PS",
+			"lastFour",
+			"more",
+			"h3",
+			"front",
+			"colorCounter",
+			"photoSession.photo ",
+			"photoSession.photo",
+			"twitter",
+			"howto",
+			"eventbox",
+			"howto",
+			"twitterbox",
+			"mapsBox"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.php",
+					"settings":
+					{
+						"buffer_size": 755,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								445,
+								445
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"encoding_helper_confidence": 1.0,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"jquery": true,
+								"regexdash": true,
+								"strict": false,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": true,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "studio.php",
+					"settings":
+					{
+						"buffer_size": 1483,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"encoding_helper_confidence": 1.0,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"jquery": true,
+								"regexdash": true,
+								"strict": false,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": true,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "project.php",
+					"settings":
+					{
+						"buffer_size": 763,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"encoding_helper_confidence": 1.0,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"jquery": true,
+								"regexdash": true,
+								"strict": false,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": true,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 27.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"human",
+				"humans.txt"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 210.0,
+	"status_bar_visible": true
+}
