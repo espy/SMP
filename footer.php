@@ -34,6 +34,7 @@
       <script src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/SMP/js/jquery.min.js"></script>
       <script src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/SMP/js/underscore-min.js"></script>
       <script src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/SMP/js/smp.js"></script>
+      <script type="text/javascript" src="http://fast.fonts.com/jsapi/0e219d25-8ad0-414f-9d00-0f494e371b4e.js"></script>
   <?php
   	/* Always have wp_footer() just before the closing </body>
   	 * tag of your theme, or you will break many plugins, which

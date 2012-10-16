@@ -20,6 +20,15 @@ function initListeners() {
     var img = $(this).data('image');
     $('#backgroundImage').empty().append('<img src="'+img+'">');
   });
+  $(window).resize(function(){
+    redrawLayout();
+  });
+  redrawLayout();
+}
+
+function redrawLayout() {
+  // make project lists full height
+  $('ul.projectList').height($(window).height() - 10);
 }
 
 function switchLocale(element) {

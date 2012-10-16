@@ -29,8 +29,8 @@ foreach ($project_categories as $project_category) {
       $gallery = get_field('gallery', $project->ID);
       $year = get_field('year', $project->ID);
       $image = $gallery[0]['image']['sizes']['large'];
-      echo '<li data-image="'.$image.'">';
-      echo $year.'<br>'.$title;
+      echo '<li class="project" data-image="'.$image.'">';
+      echo '<strong>'.$year.'</strong><span>'.$title.'</span>';
       echo '</li>';
     }
   }
