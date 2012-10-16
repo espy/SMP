@@ -11,10 +11,6 @@ $(window).ready(function() {
 });
 
 function initListeners() {
-  $('a.localeSwitcher').click(function(event){
-    event.preventDefault();
-    switchLocale(this);
-  });
   $('ul.projectList li:not(.listTitle)').hover(function(event){
     event.preventDefault();
     var img = $(this).data('image');
@@ -29,18 +25,4 @@ function initListeners() {
 function redrawLayout() {
   // make project lists full height
   $('ul.projectList').height($(window).height() - 10);
-}
-
-function switchLocale(element) {
-  var locale = $(element).data('target-locale');
-  var baseURL = $(element).data('base-url');
-  var url = window.location.href;
-  url = url.replace(baseURL, "");
-  // Check whether the URL has a locale and remove it
-  var parts = _.compact(url.split("/"));
-  if(parts[0].length === 2){
-    parts.shift();
-  }
-  var newURL = baseURL +"/"+ locale + "/" + parts.join("/")+"/";
-  window.location = newURL;
 }

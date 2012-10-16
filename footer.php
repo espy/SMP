@@ -9,39 +9,34 @@
  * @subpackage Boilerplate
  * @since Boilerplate 1.0
  */
-?>
-  		</section><!-- #main -->
-  		<footer role="contentinfo">
-  <?php
-  	/* A sidebar in the footer? Yep. You can can customize
-  	 * your footer with four columns of widgets.
-  	   get_sidebar( 'footer' );
-     */
 
-    # Language switcher
-    $shortLocale = substr(get_locale(), 0, 2);
-    switch($shortLocale){
-      case "de":
-        echo '<a href="" class="localeSwitcher" data-target-locale="en" data-base-url="'.get_bloginfo('url').'">English</a>';
-      break;
-      case "en":
-        echo '<a href="" class="localeSwitcher" data-target-locale="de" data-base-url="'.get_bloginfo('url').'">Deutsch</a>';
-      break;
-    }
+dump_wp_query();
+dump_wp();
+dump_post();
+
+?>
+      </section><!-- #main -->
+      <footer role="contentinfo">
+  <?php
+    /* A sidebar in the footer? Yep. You can can customize
+     * your footer with four columns of widgets.
+       get_sidebar( 'footer' );
+     */
   ?>
-  		</footer><!-- footer -->
+      </footer><!-- footer -->
       <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> -->
-      <script src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/SMP/js/jquery.min.js"></script>
-      <script src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/SMP/js/underscore-min.js"></script>
-      <script src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/SMP/js/smp.js"></script>
+      <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
+      <script src="<?php echo get_template_directory_uri(); ?>/js/underscore-min.js"></script>
+      <script src="<?php echo get_template_directory_uri(); ?>/js/smp.js"></script>
       <script type="text/javascript" src="http://fast.fonts.com/jsapi/0e219d25-8ad0-414f-9d00-0f494e371b4e.js"></script>
   <?php
-  	/* Always have wp_footer() just before the closing </body>
-  	 * tag of your theme, or you will break many plugins, which
-  	 * generally use this hook to reference JavaScript files.
-  	 */
-  	wp_footer();
+    /* Always have wp_footer() just before the closing </body>
+     * tag of your theme, or you will break many plugins, which
+     * generally use this hook to reference JavaScript files.
+     */
+    wp_footer();
   ?>
     </div><!-- wrapper -->
-	</body>
+  </body>
 </html>
+

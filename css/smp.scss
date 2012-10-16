@@ -15,12 +15,10 @@ $gutter: 10px;
 
 $hoverBG: #e5e5e5;
 $white: #FFFFFF;
+$black: #000000;
 
 $demi: 'ITCFranklinGothicW01-Dm 812668', Helvetica, sans;
 $book: 'ITCFranklinGothicW01-Bk 812647', Helvetica, sans;
-
-// bold:
-// font-family:'ITCFranklinGothicW01-Dm 812668';
 
 /* apply a natural box layout model to all elements */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
@@ -38,11 +36,10 @@ body{
 }
 
 .wrapper {
-  //max-width: 1190px;
   max-width: 1400px;
   width: 100%;
   margin: 0px auto;
-  background: RGBA(200,200,200,.2);
+  //background: RGBA(200,200,200,.2);
   #content {
     margin: 0 0 0 $column + 105px;
     width: 12 * $halfColumn + 2 * $gutter;
@@ -58,6 +55,60 @@ header{
   min-height: 100%;
   position: absolute;
   margin-left: 105px;
+  a.title{
+    margin: 77px 0 0 10px;
+    display: block;
+    h1{
+      background: url("../images/smp_logo.gif") no-repeat;
+      text-indent: -999px;
+      height: 115px;
+    }
+  }
+  #nav{
+    margin: 55px 0 0 $gutter;
+    padding: 0;
+    li{
+      list-style: none;
+      margin: 11px 0 0 0;
+      padding: 0;
+      &.current_page_item{
+        font-family: $demi;
+      }
+      a{
+        text-decoration: none;
+        color: $black;
+      }
+    }
+  }
+  .contact{
+    position: absolute;
+    bottom: 134px;
+    left: 10px;
+    a{
+      color: $black;
+      text-decoration:none;
+    }
+    .phone{
+      font-size: .9em;
+      display: block;
+      font-family: $demi;
+    }
+    .mail{
+      display: block;
+      font-family: $demi;
+      margin-top: 2px;
+      margin-bottom: 9px;
+    }
+    .imprint{
+      font-size: .9em;
+      line-height: 2em;
+    }
+    .language{
+      font-size: .9em;
+      float:right;
+      line-height: 2em;
+    }
+  }
 }
 
 footer{
@@ -82,16 +133,20 @@ ul.projectList{
       font-family: $demi;
     }
     &.project{
-      padding: $gutter 2 * $gutter $gutter $gutter;
+      padding: 8px 2 * $gutter $gutter $gutter;
       min-height: 90px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       position: relative;
       margin-right: $gutter;
       @include single-transition(background, .25s);
       strong{
         display: block;
-        margin-bottom: 10px;
+        margin-bottom: 7px;
         font-family: $demi;
+        font-size: .9em;
+      }
+      span{
+        line-height: 17px;
       }
       &:hover{
         background: $hoverBG;
@@ -111,6 +166,7 @@ ul.projectList{
     width: $column + 2 * $gutter;
     margin: 0 0 0 -1*$gutter;
     background: $white;
+    border-right: none;
     li{
       &.listTitle{
         margin-left: 2 * $gutter;
@@ -127,7 +183,7 @@ ul.projectList{
         }
         &.project{
           margin-left: 0;
-          padding: $gutter $gutter $gutter 0;
+          padding: 8px $gutter $gutter 0;
         }
       }
     }
