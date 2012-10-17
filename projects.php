@@ -11,17 +11,23 @@ get_header(); ?>
 <!-- LOOP starts here -->
 <div class="viewport">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-global $post;
-# echo $post->post_content;
+  global $post;
+  # echo $post->post_content;
 
-$projects = get_pages('child_of='.$post->ID);
-# Sort projects by date
-usort($projects, function($a, $b) {
-    return get_field('year', $b->ID) - get_field('year', $a->ID);
-});
-foreach ($project_categories as $project_category) {
+  $projects = get_pages('child_of='.$post->ID);
+  # Sort projects by date
+  usort($projects, function($a, $b) {
+      return get_field('year', $b->ID) - get_field('year', $a->ID);
+  });
+
+  echo '<div class="listTitles">';
+  foreach ($project_categories as $project_category) {
+    echo '<div class="listTitle">'.$project_category.'</div>';
+  }
+  echo '</div>';
+
+  foreach ($project_categories as $project_category) {
     echo '<ul class="projectList">';
-    echo '<li class="listTitle">'.$project_category.'</li>';
     foreach($projects as $project){
       #dump_r($project);
       $category = get_field('project_category', $project->ID);

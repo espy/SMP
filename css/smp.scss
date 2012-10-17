@@ -81,6 +81,9 @@ header{
       a{
         text-decoration: none;
         color: $black;
+        &:hover{
+          font-family: $demi;
+        }
       }
     }
   }
@@ -91,6 +94,9 @@ header{
     a{
       color: $black;
       text-decoration:none;
+      &:hover{
+        font-family: $demi;
+      }
     }
     .phone{
       font-size: .9em;
@@ -116,9 +122,24 @@ header{
 }
 
 footer{
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
+  height: 53px;
+  background: $white;
+  width: 100%;
+}
+
+.listTitles{
+  position: fixed;
+  .listTitle{
+    width: $column - $gutter;
+    float:left;
+    padding: 0;
+    text-transform: uppercase;
+    margin: 67px 0 43px 10px;
+    font-family: $demi;
+  }
 }
 
 ul.projectList{
@@ -134,15 +155,13 @@ ul.projectList{
     &:hover{
       color: $black;
     }
+    &:first-child{
+      margin-top: 126px;
+      display: block;
+    }
   }
   li{
     list-style: none;
-    &.listTitle{
-      padding: 0;
-      text-transform: uppercase;
-      margin: 67px 0 43px 10px;
-      font-family: $demi;
-    }
     &.project{
       padding: 8px 2 * $gutter $gutter $gutter;
       min-height: 90px;
@@ -161,7 +180,7 @@ ul.projectList{
       }
       &:hover{
         background: $hoverBG;
-        @include border-radius(5px);
+        @include border-radius(2px);
         cursor: pointer;
         padding-right: 30px;
         &:after{
@@ -180,9 +199,6 @@ ul.projectList{
     background: $white;
     border-right: none;
     li{
-      &.listTitle{
-        margin-left: 2 * $gutter;
-      }
       &.project{
         margin-left: $gutter;
       }
@@ -190,9 +206,6 @@ ul.projectList{
     &+ul{
       width: $column - $gutter;
       li{
-        &.listTitle{
-          margin-left: 0;
-        }
         &.project{
           margin-left: 0;
           padding: 8px $gutter $gutter 0;

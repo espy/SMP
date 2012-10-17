@@ -30,7 +30,7 @@
         <ul id="nav">
           <?php wp_list_pages('title_li=&depth=1&exclude=84'); ?>
         </ul>
-        <div class="contact">
+        <div class="contact" role="contentinfo">
           <a class="phone" href="tel:49 40 369 73 70">+49 40 369 73 70</a>
           <a class="mail" href="mailto:info@störmer-partner.de">info@störmer-partner.de</a>
           <?php

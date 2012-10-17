@@ -16,13 +16,7 @@ dump_post();
 
 ?>
       </section><!-- #main -->
-      <footer role="contentinfo">
-  <?php
-    /* A sidebar in the footer? Yep. You can can customize
-     * your footer with four columns of widgets.
-       get_sidebar( 'footer' );
-     */
-  ?>
+      <footer>
       </footer><!-- footer -->
       <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> -->
       <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
