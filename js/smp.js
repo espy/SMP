@@ -11,7 +11,7 @@ $(window).ready(function() {
 });
 
 function initListeners() {
-  $('ul.projectList li:not(.listTitle)').hover(function(event){
+  $('ul.projectList:not(.index) li:not(.listTitle)').hover(function(event){
     event.preventDefault();
     var img = $(this).data('image');
     if($('#backgroundImage img').attr('src') == img) return;

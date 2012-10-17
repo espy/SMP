@@ -27,7 +27,7 @@ get_header(); ?>
   echo '</div>';
 
   foreach ($project_categories as $project_category) {
-    echo '<ul class="projectList">';
+    echo '<ul class="projectList active">';
     foreach($projects as $project){
       #dump_r($project);
       $category = get_field('project_category', $project->ID);

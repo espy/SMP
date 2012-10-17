@@ -5,44 +5,54 @@
 
 $project_categories = array('public', 'residential', 'hotel', 'office', 'exhibition', 'masterplanning');
 
+get_header();
 
-get_header(); ?>
+$projectsID = 44;
+$allProjects = get_pages('child_of='.$projectsID);
 
-<!-- LOOP starts here -->
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-global $post;
-# echo $post->post_content;
+$startPageProjects = array();
 
-$projects = get_pages('child_of='.$post->ID);
-# Sort projects by date
-usort($projects, function($a, $b) {
-    return get_field('year', $b->ID) - get_field('year', $a->ID);
-});
-foreach ($project_categories as $project_category) {
-  echo '<ul class="projectList">';
-  echo '<li class="listTitle">'.$project_category.'</li>';
-  foreach($projects as $project){
-    #dump_r($project);
-    $category = get_field('project_category', $project->ID);
-    if($category == $project_category){
-      $title = $project->post_title;
-      $gallery = get_field('gallery', $project->ID);
-      $year = get_field('year', $project->ID);
-      $image = $gallery[0]['image']['sizes']['large'];
-      echo '<li class="project" data-image="'.$image.'">';
-      echo '<strong>'.$year.'</strong><span>'.$title.'</span>';
-      echo '</li>';
-    }
+foreach($allProjects as $project){
+  #dump_r($project);
+  $show = get_field('show_on_startpage', $project->ID);
+  if($show == true){
+    $startPageProjects[] = $project;
   }
-  echo '</ul>';
 }
+
+shuffle($startPageProjects);
+
+$project = $startPageProjects[0];
+
+$gallery = get_field('gallery', $project->ID);
+$image = $gallery[0]['image']['sizes']['large'];
+
 ?>
-
-<div id="backgroundImage"></div>
-
-<!-- LOOP ends here -->
-<?php endwhile; else: ?>
-<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-<?php endif; ?>
+<div class="viewport">
+  <?php
+    echo '<ul class="projectList index">';
+    echo '<li class="project">';
+    if ( have_posts() ) : while ( have_posts() ) : the_post();
+    global $post;
+      echo $post->post_content;
+    endwhile;
+    endif;
+    echo '</li>';
+    echo '<li class="project">';
+    echo '<strong>'.$project->post_title.'</strong>';
+    echo $project->post_content;
+    echo '</li>';
+    echo '</ul>';
+  ?>
+  <ul class="projectList index"></ul>
+  <ul class="projectList index"></ul>
+  <ul class="projectList index"></ul>
+  <ul class="projectList index"></ul>
+  <ul class="projectList index"></ul>
+  <ul class="projectList index"></ul>
+</div> <!-- end of viewport -->
+<div id="backgroundImage">
+  <img src="<?php echo $image; ?>" alt="">
+</div>
 
 <?php get_footer(); ?>

@@ -167,7 +167,6 @@ ul.projectList{
       min-height: 90px;
       margin-bottom: 22px;
       position: relative;
-      margin-right: $gutter;
       @include single-transition(background, .25s);
       strong{
         display: block;
@@ -182,7 +181,6 @@ ul.projectList{
         background: $hoverBG;
         @include border-radius(2px);
         cursor: pointer;
-        padding-right: 30px;
         &:after{
           content: "⟶";
           display: block;
@@ -193,14 +191,18 @@ ul.projectList{
       }
     }
   }
-  &:hover{
+  &.active:hover, &.index:first-child{
     width: $column + 2 * $gutter;
     margin: 0 0 0 -1*$gutter;
     background: $white;
     border-right: none;
     li{
       &.project{
+        margin-right: $gutter;
         margin-left: $gutter;
+        &:first-child{
+          margin-top: 227px;
+        }
       }
     }
     &+ul{
@@ -208,7 +210,7 @@ ul.projectList{
       li{
         &.project{
           margin-left: 0;
-          padding: 8px $gutter $gutter 0;
+          padding: 8px 2*$gutter $gutter 0;
         }
       }
     }
@@ -225,4 +227,8 @@ ul.projectList{
   img{
     float:right;
   }
+}
+
+.hidden{
+  visibility: hidden;
 }
