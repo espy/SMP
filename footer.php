@@ -27,7 +27,7 @@ dump_post();
       <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> -->
       <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
       <script src="<?php echo get_template_directory_uri(); ?>/js/underscore-min.js"></script>
-      <script src="<?php echo get_template_directory_uri(); ?>/js/smp.js"></script>
+      <script src="<?php echo get_template_directory_uri(); ?>/js/smp.min.js"></script>
       <script type="text/javascript" src="http://fast.fonts.com/jsapi/0e219d25-8ad0-414f-9d00-0f494e371b4e.js"></script>
   <?php
     /* Always have wp_footer() just before the closing </body>

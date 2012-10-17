@@ -33,6 +33,7 @@ body{
   height: 100%;
   font: normal 75%/1.28571429 'ITCFranklinGothicW01-Bk 812647', Helvetica, sans;
   background: $white;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -45,6 +46,9 @@ body{
     width: 12 * $halfColumn + 2 * $gutter;
     width: 1115px;
     position: relative;
+    .viewport{
+      overflow: scroll;
+    }
   }
   overflow: hidden;
 }
@@ -124,6 +128,13 @@ ul.projectList{
   padding:0;
   border-right: 1px dotted $white;
   @include single-transition(background, .25s);
+  a{
+    color: $black;
+    text-decoration:none;
+    &:hover{
+      color: $black;
+    }
+  }
   li{
     list-style: none;
     &.listTitle{
@@ -152,6 +163,7 @@ ul.projectList{
         background: $hoverBG;
         @include border-radius(5px);
         cursor: pointer;
+        padding-right: 30px;
         &:after{
           content: "⟶";
           display: block;
@@ -194,7 +206,10 @@ ul.projectList{
   position: absolute;
   z-index: -10;
   right: 0;
+  top: 0;
+  width: 1115px;
+  overflow: hidden;
   img{
-    width: 1115px;
+    float:right;
   }
 }
