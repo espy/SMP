@@ -42,7 +42,7 @@ body{
   margin: 0px auto;
   //background: RGBA(200,200,200,.2);
   #content {
-    margin: 0 0 0 $column + 105px;
+    margin: 0 0 0 $column;
     width: 12 * $halfColumn + 2 * $gutter;
     width: 1115px;
     position: relative;
@@ -58,7 +58,8 @@ header{
   background: $white;
   min-height: 100%;
   position: absolute;
-  margin-left: 105px;
+  //margin-left: 105px;
+  margin-left: 0;
   a.title{
     margin: 77px 0 0 10px;
     display: block;
@@ -142,6 +143,7 @@ footer{
   }
 }
 
+
 ul.projectList{
   width: $column;
   float:left;
@@ -191,6 +193,13 @@ ul.projectList{
       }
     }
   }
+  &.index{
+    a{
+      &:first-child{
+        margin-top: 227px;
+      }
+    }
+  }
   &.active:hover, &.index:first-child{
     width: $column + 2 * $gutter;
     margin: 0 0 0 -1*$gutter;
@@ -200,9 +209,6 @@ ul.projectList{
       &.project{
         margin-right: $gutter;
         margin-left: $gutter;
-        &:first-child{
-          margin-top: 227px;
-        }
       }
     }
     &+ul{

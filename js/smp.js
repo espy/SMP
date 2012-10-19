@@ -37,14 +37,14 @@ function initListeners() {
 
 function redrawLayout() {
   // make project lists full height
-  var targetHeight = $(window).height() - 10;
+  var targetHeight = $(window).height();
   $('ul.projectList').each(function(){
     if($(this).height() > targetHeight){
       targetHeight = $(this).height();
     }
   });
   $('.viewport').height($(window).height());
-  $('ul.projectList').height(targetHeight);
+  $('ul.projectList').height(targetHeight + 70);
   scaleBGImage();
 }
 
