@@ -157,9 +157,13 @@ ul.projectList{
     &:hover{
       color: $black;
     }
-    &:first-child{
-      margin-top: 126px;
-      display: block;
+  }
+  &.active{
+    a{
+      &:first-child{
+        margin-top: 126px;
+        display: block;
+      }
     }
   }
   li{
@@ -194,13 +198,11 @@ ul.projectList{
     }
   }
   &.index{
-    a{
-      &:first-child{
-        margin-top: 227px;
-      }
+    li.welcome{
+      margin-top: 240px;
     }
   }
-  &.active:hover, &.index:first-child{
+  &.active.hover, &.index:first-child{
     width: $column + 2 * $gutter;
     margin: 0 0 0 -1*$gutter;
     background: $white;
@@ -218,6 +220,16 @@ ul.projectList{
           margin-left: 0;
           padding: 8px 2*$gutter $gutter 0;
         }
+      }
+    }
+  }
+  &.projectDescription{
+    width: $column*3;
+    .projectSlider{
+      background: RGBA(255,0,0,.2);
+      padding: 10px 40px 50px;
+      h1{
+        margin-top:0;
       }
     }
   }

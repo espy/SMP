@@ -31,20 +31,19 @@ $image = $gallery[0]['image']['sizes']['large'];
 <div class="viewport">
   <?php
     echo '<ul class="projectList index">';
-    echo '<li class="project">';
+    echo '<li class="project welcome">';
     if ( have_posts() ) : while ( have_posts() ) : the_post();
     global $post;
       echo $post->post_content;
     endwhile;
     endif;
-    echo '</li>';
+    echo '<a href="'.get_permalink($project->ID).'"></li>';
     echo '<li class="project">';
     echo '<strong>'.$project->post_title.'</strong>';
     echo $project->post_content;
-    echo '</li>';
+    echo '</li></a>';
     echo '</ul>';
   ?>
-  <ul class="projectList index"></ul>
   <ul class="projectList index"></ul>
   <ul class="projectList index"></ul>
   <ul class="projectList index"></ul>

@@ -6,46 +6,87 @@ Alex Feyerke for We Are Fellows, 2012
 
  */
 
+var lazyBGImage;
+
 $(window).ready(function() {
+  lazyBGImage = _.debounce(showBGImage, 100);
   initListeners();
 });
 
 function initListeners() {
-  $('ul.projectList:not(.index) li:not(.listTitle)').hover(function(event){
-    event.preventDefault();
-    var img = $(this).data('image');
-    if($('#backgroundImage img').attr('src') == img) return;
+  $('ul.projectList:not(.index) li:not(.listTitle)').hover(
+    // mouse in
+    function(event){
+      // white column background
+      $(this).closest('ul').addClass('hover');
 
-    $('#backgroundImage').empty().append('<img src="">');
-    $('#backgroundImage').css('visibility', 'hidden');
-    $('#backgroundImage').waitForImages(function() {
-      _.delay(function(){
-        scaleBGImage();
-        $('#backgroundImage').fadeOut(0);
-        $('#backgroundImage').css('visibility', 'visible');
-        $('#backgroundImage').fadeIn(250);
-        }, 100);
-    });
+      event.preventDefault();
+      var img = $(this).data('image');
+      if($('#backgroundImage img').attr('src') == img) return;
 
-    $('#backgroundImage img').attr('src', img);
-  });
+      $('#backgroundImage').empty().append('<img src="">');
+      $('#backgroundImage').css('visibility', 'hidden');
+      $('#backgroundImage').waitForImages(function() {
+        lazyBGImage();
+      });
+      $('#backgroundImage img').attr('src', img);
+    },
+    // mouse out
+    function(event){
+      $(this).closest('ul').removeClass('hover');
+      $('#backgroundImage').empty();
+    }
+  );
   $(window).resize(function(){
     redrawLayout();
   });
   redrawLayout();
 }
 
+function showBGImage() {
+  if($('#backgroundImage img').width() && $('#backgroundImage img').width() !== 0){
+    scaleBGImage();
+    $('#backgroundImage').fadeOut(0);
+    $('#backgroundImage').css('visibility', 'visible');
+    $('#backgroundImage').fadeIn(250);
+  } else {
+    _.delay(function(){
+      lazyBGImage();
+    }, 100);
+  }
+}
+
+function checkIfBackgroundImageExists() {
+  console.log("checkIfBackgroundImageExists");
+  console.log("has img", $('#backgroundImage img').width());
+  if($('#backgroundImage img').width() && $('#backgroundImage img').width() !== 0){
+    scaleBGImage();
+
+    //$('#backgroundImage').fadeOut(0);
+    //$('#backgroundImage').css('visibility', 'visible');
+    //$('#backgroundImage').fadeIn(250);
+  }
+}
+
 function redrawLayout() {
+  console.log("redrawLayout: ");
   // make project lists full height
-  var targetHeight = $(window).height();
+  var viewportHeight = $(window).height() - 50;
+  var targetHeight = viewportHeight;
+  console.log($(this).height());
   $('ul.projectList').each(function(){
-    if($(this).height() > targetHeight){
+    if(!$(this).data('original-height')){
+      $(this).data('original-height', $(this).height());
+    }
+    if($(this).data('original-height') > targetHeight){
       targetHeight = $(this).height();
     }
   });
-  $('.viewport').height($(window).height());
-  $('ul.projectList').height(targetHeight + 70);
+  $('.viewport').height(viewportHeight);
+  $('ul.projectList:not(index)').height(targetHeight + 70);
+  $('ul.projectList.index').height(targetHeight);
   scaleBGImage();
+  $('.projectSlider').css('margin-top', $(window).height() - 83 - $('.projectSlider h1').height());
 }
 
 function scaleBGImage() {

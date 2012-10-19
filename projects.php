@@ -16,9 +16,17 @@ get_header(); ?>
 
   $projects = get_pages('child_of='.$post->ID);
   # Sort projects by date
+  /*
   usort($projects, function($a, $b) {
+  usort($a, $b) {
       return get_field('year', $b->ID) - get_field('year', $a->ID);
   });
+   */
+
+  function sortProjects($a, $b) {
+      return get_field('year', $b->ID) - get_field('year', $a->ID);
+  }
+  usort($projects, "sortProjects");
 
   echo '<div class="listTitles">';
   foreach ($project_categories as $project_category) {
