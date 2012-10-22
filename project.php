@@ -29,14 +29,14 @@ if( get_field('gallery') ){
  */
 
 ?>
-<div class="viewport">
+<div class="viewport project">
   <ul class="projectList"></ul>
   <ul class="projectList"></ul>
   <?php
     echo '<ul class="projectList projectDescription"><div class="projectSlider">';
     if ( have_posts() ) : while ( have_posts() ) : the_post();
     global $post;
-      echo '<h1>'.$post->post_title.'</h1>';
+      echo '<div class="header"><h1>'.$post->post_title.'</h1></div>';
       // Show all available special fields
       foreach ($fields as $field) {
         // Make var for localized label, i.e. $yearLabel = "Jahr"
@@ -70,7 +70,7 @@ if( get_field('gallery') ){
         $mapString = rawurlencode($mapString);
         $mapString = str_replace("%0D%0A", "%20", $mapString);
         $mapSource = 'http://maps.googleapis.com/maps/api/staticmap?center='.$mapString.'&zoom=16&size=360x360&sensor=false&markers='.$mapString;
-        echo '<img class="map" src="'.$mapSource.'" alt="">';
+        echo '<img class="map lazy" data-src="'.$mapSource.'" alt="">';
       }
 
     endwhile;

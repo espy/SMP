@@ -13,7 +13,15 @@ $(window).ready(function() {
   initListeners();
 });
 
+$(window).load(function() {
+  redrawLayout();
+});
+
 function initListeners() {
+  // lazy load some images, like the static google map
+  $('img.lazy').each(function(){
+    $(this).attr('src', $(this).data('src'));
+  });
   $('ul.projectList:not(.index) li:not(.listTitle)').hover(
     // mouse in
     function(event){
@@ -37,6 +45,24 @@ function initListeners() {
       $('#backgroundImage').empty();
     }
   );
+  $('.viewport').scroll(function(){
+    if($('.projectSlider').offset().top <= 10){
+      $('.projectSlider').addClass('fixedProjectSliderHeader');
+    } else {
+      $('.projectSlider').removeClass('fixedProjectSliderHeader');
+    }
+  });
+  $('.projectSlider .header').click(function(){
+    if($(this).parent().hasClass('fixedProjectSliderHeader')){
+      // Header is at top and will scroll down
+      //$('.projectSlider').offset().top =
+      $('.viewport').animate({scrollTop:0}, 200);
+    } else {
+      // Header is at bottom and will scroll up
+      var target = $('.viewport').height()-55;
+      $('.viewport').animate({scrollTop:target}, 200);
+    }
+  });
   $(window).resize(function(){
     redrawLayout();
   });
@@ -61,7 +87,6 @@ function checkIfBackgroundImageExists() {
   console.log("has img", $('#backgroundImage img').width());
   if($('#backgroundImage img').width() && $('#backgroundImage img').width() !== 0){
     scaleBGImage();
-
     //$('#backgroundImage').fadeOut(0);
     //$('#backgroundImage').css('visibility', 'visible');
     //$('#backgroundImage').fadeIn(250);
