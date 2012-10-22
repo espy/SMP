@@ -46,7 +46,7 @@ function initListeners() {
     }
   );
   $('.viewport').scroll(function(){
-    if($('.projectSlider').offset().top <= 10){
+    if($('.projectSlider').offset().top <= -10){
       $('.projectSlider').addClass('fixedProjectSliderHeader');
     } else {
       $('.projectSlider').removeClass('fixedProjectSliderHeader');
@@ -111,7 +111,7 @@ function redrawLayout() {
   $('ul.projectList:not(index)').height(targetHeight + 70);
   $('ul.projectList.index').height(targetHeight);
   scaleBGImage();
-  $('.projectSlider').css('margin-top', $(window).height() - 83 - $('.projectSlider h1').height());
+  $('.projectSlider').css('margin-top', $(window).height() - 103 - $('.projectSlider h1').height());
 }
 
 function scaleBGImage() {
