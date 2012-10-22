@@ -45,8 +45,8 @@ function initListeners() {
       $('#backgroundImage').empty();
     }
   );
-  $('.viewport').scroll(function(){
-    if($('.projectSlider').offset().top <= -10){
+  $(window).scroll(function(){
+    if($(window).scrollTop() >= $(window).height() - 106){
       $('.projectSlider').addClass('fixedProjectSliderHeader');
     } else {
       $('.projectSlider').removeClass('fixedProjectSliderHeader');
@@ -55,12 +55,11 @@ function initListeners() {
   $('.projectSlider .header').click(function(){
     if($(this).parent().hasClass('fixedProjectSliderHeader')){
       // Header is at top and will scroll down
-      //$('.projectSlider').offset().top =
-      $('.viewport').animate({scrollTop:0}, 200);
+      $(document.body).animate({scrollTop: 0}, 200);
     } else {
       // Header is at bottom and will scroll up
-      var target = $('.viewport').height()-55;
-      $('.viewport').animate({scrollTop:target}, 200);
+      var target = $(window).height() - 106;
+      $(document.body).animate({scrollTop: target}, 200);
     }
   });
   $(window).resize(function(){
@@ -83,8 +82,6 @@ function showBGImage() {
 }
 
 function checkIfBackgroundImageExists() {
-  console.log("checkIfBackgroundImageExists");
-  console.log("has img", $('#backgroundImage img').width());
   if($('#backgroundImage img').width() && $('#backgroundImage img').width() !== 0){
     scaleBGImage();
     //$('#backgroundImage').fadeOut(0);
@@ -96,6 +93,7 @@ function checkIfBackgroundImageExists() {
 function redrawLayout() {
   console.log("redrawLayout: ");
   // make project lists full height
+  /*
   var viewportHeight = $(window).height() - 50;
   var targetHeight = viewportHeight;
   console.log($(this).height());
@@ -110,15 +108,16 @@ function redrawLayout() {
   $('.viewport').height(viewportHeight);
   $('ul.projectList:not(index)').height(targetHeight + 70);
   $('ul.projectList.index').height(targetHeight);
+   */
   scaleBGImage();
+  $('.viewport').height($('.viewport').children().height());
   $('.projectSlider').css('margin-top', $(window).height() - 103 - $('.projectSlider h1').height());
+  $('#backgroundImage').css('right', ($(window).width()/2) - (1170/2));
 }
 
 function scaleBGImage() {
   var bgImage = $('#backgroundImage img')[0];
-  console.log("bgImage: ",bgImage);
   var dimensions = getFitAroundSizes($('#backgroundImage img'), 1115, $(window).height());
-  console.log("dimensions: ",dimensions);
   $('#backgroundImage img').width(dimensions[0]);
   $('#backgroundImage img').height(dimensions[1]);
 }

@@ -33,7 +33,7 @@ body{
   height: 100%;
   font: normal 75%/1.28571429 'ITCFranklinGothicW01-Bk 812647', Helvetica, sans;
   background: $white;
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 .wrapper {
@@ -47,21 +47,21 @@ body{
     width: 1115px;
     position: relative;
     .viewport{
-      overflow: scroll;
+      //overflow: scroll;
       background: url('../images/bg_general.gif') repeat-y;
       &.project{
         background: url('../images/bg_project.gif') repeat-y;
       }
     }
   }
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 header{
   width: $column;
   background: $white;
   min-height: 100%;
-  position: absolute;
+  position: fixed;
   //margin-left: 105px;
   margin-left: 0;
   a.title{
@@ -233,7 +233,7 @@ ul.projectList{
     .projectSlider{
       background: RGBA(255,0,0,.2);
       background: $white;
-      padding: 10px 40px 50px;
+      padding: 10px 40px 90px;
       .header{
         background: $white url("../images/arrow_up.png") no-repeat;
         background-position: 483px 27px;
@@ -299,10 +299,10 @@ ul.projectList{
 }
 
 #backgroundImage {
-  position: absolute;
+  position: fixed;
   z-index: -10;
   right: 0;
-  top: 0;
+  top: 10px;
   width: 1115px;
   overflow: hidden;
   img{
