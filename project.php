@@ -99,13 +99,17 @@ if( get_field('gallery') ){
       if($next > count($gallery)){
         $next = 1;
       }
-      echo '<a href="'.$prev.'" class="previous"></a>';
-      echo '<a href="'.$next.'" class="next"></a>';
+      echo '<a href="'.$prev.'" class="previous"><span>PREVIOUS</span></a>';
+      echo '<a href="'.$next.'" class="next"><span>NEXT</span></a>';
     }
 
   ?>
 </div> <!-- end of viewport -->
 <div id="backgroundImage" data-gallery='<?php echo json_encode($gallery) ?>'>
+  <?php
+
+
+  ?>
   <img src="<?php echo $image; ?>" alt="">
 </div>
 
