@@ -1,6 +1,6 @@
 /*
 
-Störmer Murphy and Partners
+Stรörmer Murphy and Partners
 
 Alex Feyerke for We Are Fellows, 2012
 
@@ -17,11 +17,20 @@ $hoverBG: #e5e5e5;
 $white: #FFFFFF;
 $black: #000000;
 
+$whiteTransparent: RGBA(255,255,255,.5);
+$whiteTransparentHover: RGBA(255,255,255,.7);
+
 $demi: 'ITCFranklinGothicW01-Dm 812668', Helvetica, sans;
 $book: 'ITCFranklinGothicW01-Bk 812647', Helvetica, sans;
 
 /* apply a natural box layout model to all elements */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 html {
   height: 100%;
@@ -57,6 +66,17 @@ body{
   //overflow: hidden;
 }
 
+.topBar{
+  width: 100%;
+  height:10px;
+  display: block;
+  position: fixed;
+  top:0;
+  left:0;
+  background:$white;
+  z-index:222;
+}
+
 header{
   width: $column;
   background: $white;
@@ -64,6 +84,7 @@ header{
   position: fixed;
   //margin-left: 105px;
   margin-left: 0;
+
   a.title{
     margin: 77px 0 0 10px;
     display: block;
@@ -137,6 +158,7 @@ footer{
 
 .listTitles{
   position: fixed;
+  z-index:200;
   .listTitle{
     width: $column - $gutter;
     float:left;
@@ -205,11 +227,22 @@ ul.projectList{
     li.welcome{
       margin-top: 240px;
     }
+    &:first-child{
+      background: none;
+      *{
+        visibility: hidden;
+      }
+      &:hover{
+        background: $white;
+        *{
+          visibility: visible;
+        }
+      }
+    }
   }
   &.active.hover, &.index:first-child{
     width: $column + 2 * $gutter;
     margin: 0 0 0 -1*$gutter;
-    background: $white;
     //border-right: none;
     li{
       &.project{
@@ -226,6 +259,9 @@ ul.projectList{
         }
       }
     }
+  }
+  &.active.hover{
+    background: $white;
   }
   &.projectDescription{
     width: $column*3 + 2*$gutter;
@@ -300,25 +336,66 @@ ul.projectList{
 
 // project page image navi
 
-.previous {
+.nextNavi, .prevNavi{
   display: block;
   width: 170px;
-  background: red;
   position: fixed;
-  span{
-    //@include rotate(-90deg);
-    display:block;
+  &:hover{
+    a{
+      opacity: 1;
+    }
   }
-}
-.next {
-  display: block;
-  width: 170px;
-  background: green;
-  position: fixed;
-  right:0;
-  span{
-    //@include rotate(90deg);
-    display:block;
+  a{
+    position: relative;
+    width: 170px;
+    height: 100%;
+    float: left;
+    opacity: 0;
+    font-family: $demi;
+    @include transition(opacity .25s, background .25s);
+    text-decoration: none;
+    background: $whiteTransparent;
+    &:hover{
+      background: $whiteTransparentHover;
+    }
+    span{
+      color: $black;
+      @include rotate(-90deg);
+      display:block;
+      text-align: center;
+      font-size: 17px;
+    }
+    &.next {
+      &.lastImageInGallery{
+        display: none;
+      }
+      span{
+        margin: 155px 0 0 0px;
+      }
+    }
+    &.repeat{
+      height: 50%;
+      display: none;
+      &.lastImageInGallery{
+        display: block;
+      }
+    }
+    &.nextProject{
+      height: 50%;
+      display: none;
+      &.lastImageInGallery{
+        display: block;
+      }
+      span{
+        margin: 155px 0 0 0px;
+      }
+    }
+    &.previous {
+      display: block;
+      span{
+        margin: 310px 0 0 0px;
+      }
+    }
   }
 }
 

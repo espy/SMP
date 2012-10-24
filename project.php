@@ -3,6 +3,10 @@
  * Template Name: Project
  */
 
+// include 'dump_r.php';
+
+$project_categories = array('public', 'residential', 'hotel', 'office', 'exhibition', 'masterplanning');
+
 $fields = array(
   array(type => 'year', en => 'Year', de => 'Fertigstellung', 'output' => true),
   array(type => 'contest', en => 'Contest', de => 'Wettbewerb', 'output' => true),
@@ -17,33 +21,32 @@ get_header();
 
 $shortLocale = substr(get_locale(), 0, 2);
 
-function getImageNumber(){
+function getImageNumber($isForURL = true){
   $imageNumber = explode('/', $_SERVER["REQUEST_URI"]);
   if($imageNumber[count($imageNumber)] == ""){
     array_pop($imageNumber);
   }
   $imageNumber = $imageNumber[count($imageNumber)-1];
   if(strlen($imageNumber) >= 2){
-    $imageNumber = 0;
+    $imageNumber = 1;
+  }
+  if(!$isForURL){
+    $imageNumber--;
   }
   return $imageNumber;
 }
 
-/*
-if( get_field('gallery') ){
-  echo "<li>";
-  while( has_sub_field('gallery') ){
-    $image = get_sub_field('image');
-    echo '<img src="'.$image["sizes"]["thumbnail"].'"/>';
-  }
-  echo "</li>";
+// Sort projects by date
+function sortProjects($a, $b) {
+  return get_field('year', $b->ID) - get_field('year', $a->ID);
 }
- */
+
+
 
 ?>
 <div class="viewport project">
   <?php
-    echo '<ul class="projectList projectDescription"><div class="projectSlider">';
+    echo '<ul class="projectList projectDescription"><div class="projectSlider group">';
     if ( have_posts() ) : while ( have_posts() ) : the_post();
     global $post;
       echo '<div class="header"><h1>'.$post->post_title.'</h1></div>';
@@ -55,14 +58,14 @@ if( get_field('gallery') ){
         // Make var for localized content, i.e. $year = 2012
         $variableNameValue = $field['type'];
         $$variableNameValue = get_field($field['type'], $post->ID);
-        if($field['output'] === true){
+        if($field['output'] === true && $$variableNameValue != null){
           $suffix = ' '. $field['suffix_'.$shortLocale];
           echo '<div class="field"><h2>'.$field[$shortLocale].'</h2>';
           echo '<span>'.$$variableNameValue.$suffix.'</span></div>';
         }
       }
       $gallery = get_field('gallery', $post->ID);
-      $image = $gallery[getImageNumber()]['image']['sizes']['large'];
+      $image = $gallery[getImageNumber(false)]['image']['sizes']['large'];
 
       // Datasheet download button
       if($datasheet){
@@ -88,28 +91,101 @@ if( get_field('gallery') ){
     endif;
     echo '</div></ul>';
 
+    // get all projects
+    $projectsID = 44;
+    $projects = get_pages('child_of='.$projectsID);
+    usort($projects, "sortProjects");
+    // find projects of same type as current
+    $projectsOfSameTypeAsPost = array();
+    $index = 0;
+    foreach($projects as $project){
+      $category = get_field('project_category', $project->ID);
+      if($category == $project_category){
+        array_push($projectsOfSameTypeAsPost, $project);
+        if($project->ID == $post->ID){
+          $nextProjectIndex = $index + 1;
+        }
+        // if this is not the last project in this category, find ID of next project
+        if($index == $nextProjectIndex){
+          $nextProjectPageID = $project->ID;
+        }
+        $index++;
+      }
+    }
+    // if this was the last project in a category, find next category
+    if($nextProjectIndex >= count($projectsOfSameTypeAsPost)){
+      $nextProjectPageID = getFirstPostOfNextAvailableCategoryAfter($project_category);
+    }
+
+    function getFirstPostOfNextAvailableCategoryAfter($currentCategory){
+      global $project_categories, $projects;
+      $nextCategoryIndex = array_search($currentCategory, $project_categories) + 1;
+      // if this is the last category, loop around to the first
+      if($nextCategoryIndex >= count($project_categories)){
+        $nextCategoryIndex = 0;
+      }
+      $nextCategory = $project_categories[$nextCategoryIndex];
+      foreach($projects as $project){
+        $category = get_field('project_category', $project->ID);
+        // just use the first page of the matching category
+        if($category == $nextCategory){
+          return $project->ID;
+        }
+      }
+      // if we get to this point, the category was empty. Let's try the next one:
+      return getFirstPostOfNextAvailableCategoryAfter($nextCategory);
+    }
+    $nextProjectPermalink = get_permalink($nextProjectPageID);
+
     // image navi
+    // lots of jumping through hoops to get the correct urls with locales
+    // (sometimes the locale string vanishes in the middle of the url)
     if(count($gallery) > 1){
-      $current = getImageNumber();
+      $shortLocale = substr(get_locale(), 0, 2);
+      $root = site_url();
+      $rootWithLocale = $root."/".$shortLocale;
+      $completeUrl = str_replace($root, $rootWithLocale, full_url());
+      $url = str_replace('http://', '', $completeUrl);
+      $urlArray = array_filter(explode("/", $url));
+      $lastHash = $urlArray[count($urlArray)-1];
+      $current = getImageNumber(true);
       $prev = $current - 1;
       if($prev <= 0){
         $prev = count($gallery);
       }
       $next = $current + 1;
       if($next > count($gallery)){
+        $lastInGalleryClass = " lastImageInGallery";
         $next = 1;
+      } else {
+        $lastInGalleryClass = "";
       }
-      echo '<a href="'.$prev.'" class="previous"><span>PREVIOUS</span></a>';
-      echo '<a href="'.$next.'" class="next"><span>NEXT</span></a>';
+      if(strlen($lastHash) <= 2){
+        // probably is image number
+        array_pop($urlArray);
+        $baseUrl = join($urlArray, "/");
+      } else {
+        // probably isn't
+        $baseUrl = join($urlArray, "/");
+      }
+      echo '<div class="prevNavi"><a href="http://'.$baseUrl."/".$prev.'" class="galleryNav previous"><span>PREVIOUS</span></a></div>';
+      echo '<div class="nextNavi">';
+      echo '<a href="http://'.$baseUrl."/".$next.'" class="galleryNav next repeat'.$lastInGalleryClass.'"><span>REPEAT GALLERY</span></a>';
+      echo '<a href="'.$nextProjectPermalink.'" class="galleryNav nextProject'.$lastInGalleryClass.'"><span>NEXT PROJECT</span></a>';
+      echo '<a href="http://'.$baseUrl."/".$next.'" class="galleryNav next'.$lastInGalleryClass.'"><span>NEXT</span></a>';
+      echo '</div>';
+    }
+
+    function full_url(){
+      $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
+      $protocol = substr(strtolower($_SERVER["SERVER_PROTOCOL"]), 0, strpos(strtolower($_SERVER["SERVER_PROTOCOL"]), "/")) . $s;
+      $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
+      return $protocol . "://" . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'];
     }
 
   ?>
 </div> <!-- end of viewport -->
 <div id="backgroundImage" data-gallery='<?php echo json_encode($gallery) ?>'>
-  <?php
-
-
-  ?>
   <img src="<?php echo $image; ?>" alt="">
 </div>
 

@@ -12,17 +12,9 @@ get_header(); ?>
 <div class="viewport">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
   global $post;
-  # echo $post->post_content;
 
   $projects = get_pages('child_of='.$post->ID);
   # Sort projects by date
-  /*
-  usort($projects, function($a, $b) {
-  usort($a, $b) {
-      return get_field('year', $b->ID) - get_field('year', $a->ID);
-  });
-   */
-
   function sortProjects($a, $b) {
       return get_field('year', $b->ID) - get_field('year', $a->ID);
   }
@@ -35,7 +27,9 @@ get_header(); ?>
   echo '</div>';
 
   foreach ($project_categories as $project_category) {
-    echo '<ul class="projectList active">';
+    echo '<ul class="projectList active projects">';
+    // Here's a line of dummy projects
+    //echo '<a href="http://localhost/stoermer/app/de/projekte/another-public-project/"><li class="project" data-image="http://localhost/stoermer/app/wp-content/uploads/2012/10/419671263_bf1053cd69_b.jpg"><strong>2012</strong><span>Noch ein öffentliches Projekt</span></li></a>';
     foreach($projects as $project){
       #dump_r($project);
       $category = get_field('project_category', $project->ID);

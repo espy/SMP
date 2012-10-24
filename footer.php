@@ -10,17 +10,13 @@
  * @since Boilerplate 1.0
  */
 
-dump_wp_query();
-dump_wp();
-dump_post();
-
 ?>
       </section><!-- #main -->
       <footer>
       </footer><!-- footer -->
       <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> -->
+      <script type="text/javascript">var root = "<?php echo site_url(); ?>";</script>
       <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
-      <script src="<?php echo get_template_directory_uri(); ?>/js/underscore-min.js"></script>
       <script src="<?php echo get_template_directory_uri(); ?>/js/smp.min.js"></script>
       <script type="text/javascript" src="http://fast.fonts.com/jsapi/0e219d25-8ad0-414f-9d00-0f494e371b4e.js"></script>
   <?php

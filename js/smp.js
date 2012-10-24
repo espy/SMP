@@ -8,6 +8,7 @@ Alex Feyerke for We Are Fellows, 2012
 
 var lazyBGImage;
 var lastSliderPosition;
+var hashes;
 
 $(window).ready(function() {
   lazyBGImage = _.debounce(showBGImage, 100);
@@ -19,6 +20,13 @@ $(window).load(function() {
 });
 
 function initListeners() {
+  // add history listener
+  getHashes();
+  $(window).bind('statechange',function(data){
+    getHashes();
+    updateProjectGalleryNavigation();
+    updateGallery();
+  });
   // lazy load some images, like the static google map
   $('img.lazy').each(function(){
     $(this).attr('src', $(this).data('src'));
@@ -31,14 +39,7 @@ function initListeners() {
 
       event.preventDefault();
       var img = $(this).data('image');
-      if($('#backgroundImage img').attr('src') == img) return;
-
-      $('#backgroundImage').empty().append('<img src="">');
-      $('#backgroundImage').css('visibility', 'hidden');
-      $('#backgroundImage').waitForImages(function() {
-        lazyBGImage();
-      });
-      $('#backgroundImage img').attr('src', img);
+      setBackgroundImage(img);
     },
     // mouse out
     function(event){
@@ -54,39 +55,72 @@ function initListeners() {
     }
   });
   // Mouse over slider header: slide in to last position
-  $('.projectSlider .header').mouseenter(function(){
-    if($(window).scrollTop() === 0){
-      var target = $(window).height() - 106;
-      if(lastSliderPosition){
-        target = lastSliderPosition;
-      }
-      $(document.body).animate({scrollTop: target}, 200);
-    }
+  $('.projectDescription').mouseenter(function(){
+    openSlider();
   });
   // mouse out of slider: slide to bottom
-  $('.projectSlider').mouseleave(function(){
-    if($(window).scrollTop() > 0){
-      lastSliderPosition = $(window).scrollTop();
-      $(document.body).animate({scrollTop: 0}, 200);
-    }
+  $('.projectDescription').mouseleave(function(){
+    closeSlider();
   });
-  /*
-  // Click actions for slider
-  $('.projectSlider .header').click(function(){
-    if($(this).parent().hasClass('fixedProjectSliderHeader')){
-      // Header is at top and will scroll down
-      $(document.body).animate({scrollTop: 0}, 200);
-    } else {
-      // Header is at bottom and will scroll up
-      var target = $(window).height() - 106;
-      $(document.body).animate({scrollTop: target}, 200);
-    }
+  $('a.next, a.previous').click(function(event){
+    event.preventDefault();
+    History.pushState(null, null, $(this).attr('href'));
   });
-   */
+  $(document).keydown(function(e){
+    switch(e.which) {
+      case 37: // left
+      $('a.previous')[0].click();
+      break;
+
+      case 38: // up
+      if($('.projectDescription')){
+        openSlider();
+      }
+      break;
+
+      case 39: // right
+      if($('.nextProject.lastImageInGallery').length !== 0){
+        $('.nextProject.lastImageInGallery')[0].click();
+      } else {
+        $('a.next')[0].click();
+      }
+      break;
+
+      case 40: // down
+      if($('.projectDescription')){
+        closeSlider();
+      }
+      break;
+
+      default: return; // exit this handler for other keys
+    }
+    e.preventDefault();
+  });
   $(window).resize(function(){
     redrawLayout();
   });
   redrawLayout();
+}
+
+function openSlider() {
+  if($(window).scrollTop() === 0){
+    var target = $(window).height() - 106;
+    if(lastSliderPosition){
+      target = lastSliderPosition;
+    }
+    $(document.body).animate({scrollTop: target}, 200);
+  }
+}
+
+function closeSlider(){
+  if($(window).scrollTop() > 0){
+    if($(window).scrollTop() > $(window).height()-126){
+      lastSliderPosition = $(window).scrollTop();
+    } else {
+      lastSliderPosition = 0;
+    }
+    $(document.body).animate({scrollTop: 0}, 200);
+  }
 }
 
 function showBGImage() {
@@ -112,12 +146,10 @@ function checkIfBackgroundImageExists() {
 }
 
 function redrawLayout() {
-  console.log("redrawLayout: ");
+  lastSliderPosition = null;
   // make project lists full height
   var viewportHeight = $(window).height() - 50;
-  /*
   var targetHeight = viewportHeight;
-  console.log($(this).height());
   $('ul.projectList').each(function(){
     if(!$(this).data('original-height')){
       $(this).data('original-height', $(this).height());
@@ -126,15 +158,16 @@ function redrawLayout() {
       targetHeight = $(this).height();
     }
   });
-  $('.viewport').height(viewportHeight);
-  $('ul.projectList:not(index)').height(targetHeight + 70);
-  $('ul.projectList.index').height(targetHeight);
-   */
+  //$('.viewport').height(viewportHeight);
+  $('ul.projectList.projects').height(targetHeight + 70);
   scaleBGImage();
-  $('.viewport').height($('.viewport').children().height());
-  $('.previous, .next').height(viewportHeight);
+  $('.viewport:not(.project)').height(targetHeight);
+  $('.viewport.project').height($('.projectDescription').height());
+  $('.prevNavi, .nextNavi').height(viewportHeight);
+  $('.previous span, .next span').css('margin-top', viewportHeight/2);
+  $('.repeat span, .nextProject span').css('margin-top', viewportHeight/4.4);
   $('.projectSlider').css('margin-top', $(window).height() - 103 - $('.projectSlider h1').height());
-  $('#backgroundImage, .next').css('right', ($(window).width()/2) - (1170/2));
+  $('#backgroundImage, .nextNavi').css('right', ($(window).width()/2) - (1170/2));
 }
 
 function scaleBGImage() {
@@ -142,6 +175,44 @@ function scaleBGImage() {
   var dimensions = getFitAroundSizes($('#backgroundImage img'), 1115, $(window).height());
   $('#backgroundImage img').width(dimensions[0]);
   $('#backgroundImage img').height(dimensions[1]);
+}
+
+function updateProjectGalleryNavigation(){
+  var url = _.first(hashes, 3);
+  var imageNumber = _.last(hashes);
+  var galleryData = $('#backgroundImage').data('gallery');
+  var newNext = parseInt(imageNumber, 10) + 1;
+  if(newNext > galleryData.length){
+    newNext = 1;
+  }
+  var newPrevious = parseInt(imageNumber, 10) - 1;
+  if(newPrevious <= 0){
+    newPrevious = galleryData.length;
+  }
+  if(imageNumber == galleryData.length){
+    $('.nextNavi a').addClass('lastImageInGallery');
+  } else {
+    $('.nextNavi a').removeClass('lastImageInGallery');
+  }
+  $('a.next').attr('href', root+"/"+url.concat(newNext).join('/')+"/");
+  $('a.previous').attr('href', root+"/"+url.concat(newPrevious).join('/')+"/");
+}
+
+function updateGallery() {
+  var imageNumber = parseInt(_.last(hashes), 10)-1;
+  var galleryData = $('#backgroundImage').data('gallery');
+  var img = galleryData[imageNumber].image.url;
+  setBackgroundImage(img);
+}
+
+function setBackgroundImage(img){
+  if($('#backgroundImage img').attr('src') == img) return;
+  $('#backgroundImage').empty().append('<img src="">');
+  $('#backgroundImage').css('visibility', 'hidden');
+  $('#backgroundImage').waitForImages(function() {
+    lazyBGImage();
+  });
+  $('#backgroundImage img').attr('src', img);
 }
 
 /*
@@ -177,4 +248,13 @@ function getFitAroundSizes(element, targetWidth, targetHeight){
     ratio = heightRatio;
   }
   return [objectWidth * ratio, objectHeight * ratio];
+}
+
+function getHashes() {
+  var state = History.getState();
+  var url = state.url;
+  // this removes an IE fuckup but breaks normal browsers if there's a www. in the url
+  // url = url.replace(".", "");
+  url = url.replace(root+"/", "").split("/");
+  hashes = _.compact(url);
 }

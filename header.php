@@ -23,10 +23,11 @@
     <meta name="format-detection" content="telephone=no">
     <?php wp_head(); ?>
 	</head>
-	<body <?php body_class(); ?> >
+  <body <?php body_class(); ?> >
+    <div class="topBar"></div>
     <div class="wrapper">
-  		<header role="banner">
-  			<a class="title" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><h1><?php bloginfo( 'name' ); ?></h1></a>
+      <header role="banner">
+        <a class="title" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><h1><?php bloginfo( 'name' ); ?></h1></a>
         <ul id="nav">
           <?php wp_list_pages('title_li=&depth=1&exclude=84'); ?>
         </ul>
