@@ -16,7 +16,10 @@ $(window).ready(function() {
 });
 
 $(window).load(function() {
+  // make everything invisible, layout it, then fade in
+  $('body').fadeOut().css('display', 'block');
   redrawLayout();
+  $('body').fadeIn(250);
 });
 
 function initListeners() {
@@ -56,10 +59,16 @@ function initListeners() {
   });
   // Mouse over slider header: slide in to last position
   $('.projectDescription').mouseenter(function(){
-    openSlider();
+    // only show if mouse is still in column after delay
+    var descriptionDelay = setTimeout(function(){
+        openSlider();
+    }, 250);
+    $(this).data('descriptionDelay', descriptionDelay);
   });
   // mouse out of slider: slide to bottom
   $('.projectDescription').mouseleave(function(){
+    // clear the delay if the mouse leaves the center column before the timeout
+    clearTimeout($(this).data('descriptionDelay'));
     closeSlider();
   });
   $('a.next, a.previous').click(function(event){
@@ -69,29 +78,25 @@ function initListeners() {
   $(document).keydown(function(e){
     switch(e.which) {
       case 37: // left
-      $('a.previous')[0].click();
+        $('a.previous')[0].click();
       break;
-
       case 38: // up
-      if($('.projectDescription')){
-        openSlider();
-      }
+        if($('.projectDescription')){
+          openSlider();
+        }
       break;
-
       case 39: // right
-      if($('.nextProject.lastImageInGallery').length !== 0){
-        $('.nextProject.lastImageInGallery')[0].click();
-      } else {
-        $('a.next')[0].click();
-      }
+        if($('.nextProject.lastImageInGallery').length !== 0){
+          $('.nextProject.lastImageInGallery')[0].click();
+        } else {
+          $('a.next')[0].click();
+        }
       break;
-
       case 40: // down
-      if($('.projectDescription')){
-        closeSlider();
-      }
+        if($('.projectDescription')){
+          closeSlider();
+        }
       break;
-
       default: return; // exit this handler for other keys
     }
     e.preventDefault();
@@ -159,7 +164,7 @@ function redrawLayout() {
     }
   });
   //$('.viewport').height(viewportHeight);
-  $('ul.projectList.projects').height(targetHeight + 70);
+  $('ul.projectList.projects, ul.projectList.index').height(targetHeight + 70);
   scaleBGImage();
   $('.viewport:not(.project)').height(targetHeight);
   $('.viewport.project').height($('.projectDescription').height());
@@ -221,9 +226,9 @@ function setBackgroundImage(img){
 
 */
 
-
 // returns optimal sizes for an element that needs to fit around
-// something while maintaining aspect ratio
+// something while maintaining aspect ratio.
+// Also saves original height in .data in case we need to resize it multiple times.
 
 function getFitAroundSizes(element, targetWidth, targetHeight){
   var ratio = 1;
@@ -253,7 +258,7 @@ function getFitAroundSizes(element, targetWidth, targetHeight){
 function getHashes() {
   var state = History.getState();
   var url = state.url;
-  // this removes an IE fuckup but breaks normal browsers if there's a www. in the url
+  // FIXME this removes an IE fuckup but breaks normal browsers if there's a www. in the url
   // url = url.replace(".", "");
   url = url.replace(root+"/", "").split("/");
   hashes = _.compact(url);

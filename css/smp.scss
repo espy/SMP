@@ -42,7 +42,7 @@ body{
   height: 100%;
   font: normal 75%/1.28571429 'ITCFranklinGothicW01-Bk 812647', Helvetica, sans;
   background: $white;
-  //overflow: hidden;
+  display:none;
 }
 
 .wrapper {
@@ -283,13 +283,15 @@ ul.projectList{
           cursor: pointer;
         }
       }
-      .field {
-        margin-bottom: 4px;
-        width: 220px;
-        float: left;
-        &:nth-child(odd){
-          margin-left: 35px;
-          width: 190px;
+      .fieldCollection{
+        margin-bottom: 40px;
+        .field {
+          margin-bottom: 4px;
+          width: 220px;
+          float: left;
+          &:nth-child(odd){
+            width: 225px;
+          }
         }
       }
       h2 {
@@ -311,7 +313,7 @@ ul.projectList{
         text-transform: uppercase;
         padding: 9px 35px 9px 10px;
         font-size: 11px;
-        margin: 40px 0;
+        margin: 0 0 40px 0;
         display: inline-block;
       }
       .description {

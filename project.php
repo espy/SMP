@@ -51,6 +51,7 @@ function sortProjects($a, $b) {
     global $post;
       echo '<div class="header"><h1>'.$post->post_title.'</h1></div>';
       // Show all available special fields
+      echo '<div class="fieldCollection group">';
       foreach ($fields as $field) {
         // Make var for localized label, i.e. $yearLabel = "Jahr"
         $variableNameLabel = $field['type'].'Label';
@@ -64,6 +65,7 @@ function sortProjects($a, $b) {
           echo '<span>'.$$variableNameValue.$suffix.'</span></div>';
         }
       }
+      echo '</div>';
       $gallery = get_field('gallery', $post->ID);
       $image = $gallery[getImageNumber(false)]['image']['sizes']['large'];
 
