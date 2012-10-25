@@ -20,6 +20,10 @@ $(window).load(function() {
   $('body').fadeOut().css('display', 'block');
   redrawLayout();
   $('body').fadeIn(250);
+  if(scrollToSection){
+    var target = $('.'+scrollToSection).offset().top - 85;
+    $(document.body).animate({scrollTop: target}, 200);
+  }
 });
 
 function initListeners() {
@@ -100,6 +104,14 @@ function initListeners() {
       default: return; // exit this handler for other keys
     }
     e.preventDefault();
+  });
+  $('a.anchor').click(function(event){
+    event.preventDefault();
+    var target = $('.'+$(this).data('anchor')).offset().top - 85;
+    $(document.body).animate({scrollTop: target}, 200);
+    $(this).closest('ul').children('li').removeClass('current_page_item');
+    $(this).closest('li').addClass('current_page_item');
+
   });
   $(window).resize(function(){
     redrawLayout();
