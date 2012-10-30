@@ -28,7 +28,7 @@ $gallery = get_field('gallery', $project->ID);
 $image = $gallery[0]['image']['sizes']['large'];
 
 ?>
-<div class="viewport">
+<div class="viewport group">
   <?php
     echo '<ul class="projectList index">';
     echo '<li class="project welcome">';

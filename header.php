@@ -30,7 +30,7 @@
 	</head>
   <body <?php body_class(); ?> >
     <div class="topBar"></div>
-    <div class="wrapper">
+    <div class="wrapper group">
       <header role="banner">
         <a class="title" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><h1><?php bloginfo( 'name' ); ?></h1></a>
         <ul id="nav">

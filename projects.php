@@ -9,7 +9,7 @@ $project_categories = array('public', 'residential', 'hotel', 'office', 'exhibit
 get_header(); ?>
 
 <!-- LOOP starts here -->
-<div class="viewport">
+<div class="viewport group">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
   global $post;
 
