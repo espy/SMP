@@ -39,7 +39,6 @@ html {
 body{
   margin: 10px 0 0 0;
   padding: 0;
-  height: 100%;
   font: normal 75%/1.28571429 'ITCFranklinGothicW01-Bk 812647', Helvetica, sans;
   background: $white;
   display:none;
@@ -53,20 +52,22 @@ a{
     text-decoration: none;
   }
 }
+
+b, strong {
+  font-weight: normal;
+  font-family: $demi;
+}
 .wrapper {
   max-width: 1400px;
   width: 100%;
   margin: 0px auto;
-  //background: RGBA(200,200,200,.2);
   #content {
     margin: 0 0 0 $column;
     width: 12 * $halfColumn + 2 * $gutter;
     width: 1115px;
     position: relative;
     border-top: 1px solid RGBA(255,255,255, 0.1);
-    //padding-bottom: 200px;
     .viewport{
-      //overflow: scroll;
       margin-top: -1px;
       background: url('../images/bg_general.gif') fixed 270px;
       &.studio{
@@ -74,7 +75,6 @@ a{
       }
     }
   }
-  //overflow: hidden;
 }
 
 .topBar{
@@ -93,21 +93,24 @@ header{
   background: $white;
   min-height: 100%;
   position: fixed;
-  //margin-left: 105px;
   margin-left: 0;
-
+  z-index: 400;
   a.title{
     margin: 77px 0 0 10px;
     display: block;
     h1{
       background: url("../images/smp_logo.gif") no-repeat;
       text-indent: -999px;
+      color: $white;
       height: 115px;
     }
   }
   #nav{
     margin: 55px 0 0 $gutter;
     padding: 0;
+    ul{
+      padding: 0 0 0 20px;
+    }
     li{
       list-style: none;
       margin: 11px 0 0 0;
@@ -187,7 +190,6 @@ ul.projectList{
   margin: 0;
   padding:0;
   min-height: 5px;
-  //border-right: 1px dotted $white;
   @include single-transition(background, .25s);
   a{
     position: relative;
@@ -246,6 +248,7 @@ ul.projectList{
     }
     &:first-child{
       background: none;
+      padding-bottom: 50px;
       *{
         visibility: hidden;
       }
@@ -260,7 +263,6 @@ ul.projectList{
   &.active.hover, &.index:first-child{
     width: $column + 2 * $gutter;
     margin: 0 0 0 -1*$gutter;
-    //border-right: none;
     li{
       &.project{
         margin-right: $gutter;
@@ -431,11 +433,26 @@ a.datasheet{
   z-index: -10;
   right: 0;
   top: 10px;
-  // only needed if we align right at wrapper instead of window
-  //width: 1115px;
   overflow: hidden;
+  .prevNavi, .nextNavi{
+    position: absolute;
+    height: 100%;
+    z-index: 200;
+    .repeat{
+      height: 100%;
+    }
+  }
+  .columnsOverlay{
+    background: url('../images/bg_general.gif') fixed 270px;
+    width: 1115px;
+    position: absolute;
+  }
   img{
     float:right;
+  }
+  &.studio{
+    position: relative;
+    top: 0;
   }
 }
 
@@ -458,6 +475,7 @@ a.datasheet{
 
 .studio{
   position:relative;
+  z-index: 300;
   strong{
     text-transform: uppercase;
     font-family: $demi;
@@ -471,7 +489,7 @@ a.datasheet{
     }
   }
   .about{
-    margin: 0 0 0 10px;
+    margin: 40px 0 0 10px;
     height: 702px;
     .info{
       ul{
@@ -748,13 +766,11 @@ a.datasheet{
     }
     ul{
       display: block;
-      width: 500px;
+      width: 240px;
       float: left;
-      margin-left: 10px;
+      margin: 14px 0 0 10px;
       li{
-        float: left;
         width: 240px;
-        margin-right: 10px;
         strong{
           font-size: 11px;
           text-transform: none;
@@ -763,10 +779,6 @@ a.datasheet{
           margin-top: 1px;
           font-size: 14px;
           line-height: 20px;
-        }
-        &:nth-child(odd){
-          margin-right: 20px;
-          width: 230px;
         }
       }
     }
@@ -800,7 +812,6 @@ a.datasheet{
     }
   }
 }
-
 
 .hidden{
   visibility: hidden;

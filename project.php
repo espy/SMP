@@ -137,6 +137,7 @@ function sortProjects($a, $b) {
       // if we get to this point, the category was empty. Let's try the next one:
       return getFirstPostOfNextAvailableCategoryAfter($nextCategory);
     }
+
     $nextProjectPermalink = get_permalink($nextProjectPageID);
 
     // image navi

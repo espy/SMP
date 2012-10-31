@@ -32,16 +32,82 @@ $shortLocale = substr(get_locale(), 0, 2);
 // The various page IDs
 $studioID = 17;
 
+$studioPageNameSlug = basename(get_permalink($studioID));
+
 $aboutID = 227;
 $partnersID = 194;
 $staffID = 206;
 $jobsID = 219;
 $awardsID = 237;
 
+if ( have_posts() ) : while ( have_posts() ) : the_post();
+global $post;
+if($post->ID != $studioID){
+  $currentSection = qtrans_use($shortLocale, get_post($post->ID)->post_title,false);
+}
+endwhile; endif;
+
 // The studio gallery
 $gallery = get_field('gallery', $studioID);
 $backgroundImage = $gallery[getImageNumber(false)]['image']['sizes']['large'];
+?>
 
+<div id="backgroundImage" class="studio" data-gallery='<?php echo json_encode($gallery) ?>'>
+
+<?php
+
+if(count($gallery) > 1){
+  $shortLocale = substr(get_locale(), 0, 2);
+  $root = site_url();
+  $rootWithLocale = $root."/".$shortLocale;
+  $completeUrl = str_replace($root, $rootWithLocale, full_url());
+  $url = str_replace('http://', '', $completeUrl);
+  $urlArray = array_filter(explode("/", $url));
+  $lastHash = $urlArray[count($urlArray)-1];
+  $current = getImageNumber(true);
+  $prev = $current - 1;
+  if($prev <= 0){
+    $prev = count($gallery);
+  }
+  $next = $current + 1;
+  if($next > count($gallery)){
+    $lastInGalleryClass = " lastImageInGallery";
+    $next = 1;
+  } else {
+    $lastInGalleryClass = "";
+  }
+  if(strlen($lastHash) <= 2){
+    // probably is image number
+    array_pop($urlArray);
+    $baseUrl = join($urlArray, "/");
+  } else {
+    // probably isn't
+    if($urlArray[count($urlArray) - 1] != $studioPageNameSlug){
+      array_pop($urlArray);
+    }
+    $baseUrl = join($urlArray, "/");
+  }
+  echo '<div class="prevNavi"><a href="http://'.$baseUrl."/".$prev.'" class="galleryNav previous"><span>PREVIOUS</span></a></div>';
+  echo '<div class="nextNavi">';
+  echo '<a href="http://'.$baseUrl."/".$next.'" class="galleryNav next repeat'.$lastInGalleryClass.'"><span>REPEAT GALLERY</span></a>';
+  echo '<a href="http://'.$baseUrl."/".$next.'" class="galleryNav next'.$lastInGalleryClass.'"><span>NEXT</span></a>';
+  echo '</div>';
+}
+
+function full_url(){
+  $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
+  $protocol = substr(strtolower($_SERVER["SERVER_PROTOCOL"]), 0, strpos(strtolower($_SERVER["SERVER_PROTOCOL"]), "/")) . $s;
+  $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
+  return $protocol . "://" . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'];
+}
+
+?>
+
+  <div class="columnsOverlay"></div>
+  <img src="<?php echo $backgroundImage; ?>" alt="">
+</div>
+
+<?php
 // About/Studio
 $aboutTitle = qtrans_use($shortLocale, get_post($aboutID)->post_title,false);
 $aboutContent = qtrans_use($shortLocale, get_post($aboutID)->post_content,false);
@@ -188,28 +254,39 @@ if( get_field('staff_members', $staffID) ){
 echo '</ul>';
 echo '</div>';
 
-echo '<div class="jobs group">';
 // Jobs
+echo '<div class="jobs group">';
 $jobsTitle = qtrans_use($shortLocale, get_post($jobsID)->post_title,false);
 echo '<strong class="'.$jobsTitle.'">'.$jobsTitle.'</strong>';
 
 echo '<div class="subline">'.get_field('subline_'.$shortLocale, $jobsID).'</div>';
 echo '<div class="general">'.qtrans_use($shortLocale, get_post($jobsID)->post_content, false).'</div>';
 
-echo '<ul>';
+$leftColumn = '<ul class="left">';
+$rightColumn = '<ul>';
+$index = 0;
 if( get_field('job', $jobsID) ){
   while( has_sub_field('job', $jobsID) ){
-    echo "<li>";
+    $item = '<li>';
     $title = get_sub_field('title_'.$shortLocale);
     $description = get_sub_field('description_'.$shortLocale);
     $attachment = get_sub_field('attachment');
-    echo '<strong>'.$title.'</strong>';
-    echo '<p>'.$description.'</p>';
-    echo '<a class="datasheet" href="'.$attachment['url'].'">'.$translations['jobAttachment'][$shortLocale].'</a>';
-    echo "</li>";
+    $item .= '<strong>'.$title.'</strong>';
+    $item .= '<p>'.$description.'</p>';
+    $item .= '<a class="datasheet" href="'.$attachment['url'].'">'.$translations['jobAttachment'][$shortLocale].'</a>';
+    $item .= "</li>";
+    if($index % 2 == 0){
+      $leftColumn .= $item;
+    } else {
+      $rightColumn .= $item;
+    }
+    $index++;
   }
 }
-echo '</ul>';
+$leftColumn .= '</ul>';
+$rightColumn .= '</ul>';
+echo $leftColumn;
+echo $rightColumn;
 echo '</div>';
 
 // Awards
@@ -229,17 +306,10 @@ if( get_field('awards', $awardsID) ){
   }
 }
 echo '</ul>';
+echo '</div>';
 
-/*
-below viewport:
-<div id="backgroundImage" data-gallery='<?php echo json_encode($gallery) ?>'>
-  <img src="<?php echo $backgroundImage; ?>" alt="">
-</div>
- */
 ?>
 </div> <!-- end of viewport -->
-
-
 
 <script type="text/javascript">
   var scrollToSection = "<?php echo $currentSection; ?>";
