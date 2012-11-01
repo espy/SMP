@@ -311,8 +311,8 @@ echo '</div>';
 ?>
 </div> <!-- end of viewport -->
 
-<script type="text/javascript">
-  var scrollToSection = "<?php echo $currentSection; ?>";
-</script>
+<div id="backgroundImage" data-gallery='<?php echo json_encode($gallery) ?>'>
+  <img src="<?php #echo $image; ?>" alt="">
+</div>
 
 <?php get_footer(); ?>

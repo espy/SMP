@@ -38,35 +38,28 @@
           if ( have_posts() ) : while ( have_posts() ) : the_post();
             global $post;
             $studioID = 17;
-            if($post->ID == $studioID || $post->post_parent == $studioID){
-              // if on studio page, build subnav for studio anchors
-              $rootPages = get_pages( array( 'parent' => 0,  'sort_column' => 'menu_order', 'exclude' => 84  ));
-              foreach($rootPages as $rootPage){
-                if($rootPage->ID == $post->ID || $rootPage->ID == $post->post_parent){
-                  $listAttribute = ' class="current_page_item"';
-                } else {
-                  $listAttribute = "";
-                }
-                echo '<li'.$listAttribute.'><a href="'.get_permalink($rootPage->ID).'">'.$rootPage->post_title.'</a></li>';
-                if($rootPage->ID == $studioID){
-                  $studioAnchors = get_pages( array( 'child_of' => $studioID, 'sort_column' => 'menu_order' ));
-                  echo '<ul>';
-                  foreach($studioAnchors as $studioAnchor){
-                    if($studioAnchor->ID == $post->ID){
-                      $subListAttribute = ' class="current_page_item"';
-                    } else {
-                      $subListAttribute = "";
-                    }
-                    echo '<li'.$subListAttribute.'><a href="'.get_permalink($studioAnchor->ID).'" class="anchor" data-anchor="'.qtrans_use($shortLocale, get_post($studioAnchor->ID)->post_title,false).'">'.$studioAnchor->post_title.'</a></li>';
-                  }
-                  echo '</ul>';
-                }
+            $rootPages = get_pages( array( 'parent' => 0,  'sort_column' => 'menu_order', 'exclude' => 84  ));
+            foreach($rootPages as $rootPage){
+              if($rootPage->ID == $post->ID || $rootPage->ID == $post->post_parent){
+                $listAttribute = ' class="current_page_item"';
+              } else {
+                $listAttribute = "";
               }
-            } else {
-              // If on any other page, just build standard navi
-              wp_list_pages('title_li=&depth=1&exclude=84');
+              echo '<li'.$listAttribute.'><a href="'.get_permalink($rootPage->ID).'">'.$rootPage->post_title.'</a></li>';
+              if($rootPage->ID == $studioID && ($post->ID == $studioID || $post->post_parent == $studioID)){
+                $studioAnchors = get_pages( array( 'child_of' => $studioID, 'sort_column' => 'menu_order' ));
+                echo '<ul>';
+                foreach($studioAnchors as $studioAnchor){
+                  if($studioAnchor->ID == $post->ID){
+                    $subListAttribute = ' class="current_page_item"';
+                  } else {
+                    $subListAttribute = "";
+                  }
+                  echo '<li'.$subListAttribute.'><a href="'.get_permalink($studioAnchor->ID).'" class="anchor" data-anchor="'.qtrans_use($shortLocale, get_post($studioAnchor->ID)->post_title,false).'">'.$studioAnchor->post_title.'</a></li>';
+                }
+                echo '</ul>';
+              }
             }
-
           endwhile;
           endif;
           ?>
