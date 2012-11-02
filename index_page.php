@@ -31,24 +31,23 @@ $image = $gallery[0]['image']['sizes']['large'];
 <div class="viewport index group">
   <?php
     echo '<ul class="projectList index">';
+    // Welcome
     echo '<li class="project welcome">';
     if ( have_posts() ) : while ( have_posts() ) : the_post();
     global $post;
       echo $post->post_content;
     endwhile;
     endif;
+    echo '</li>';
+    // Project description
     echo '<a href="'.get_permalink($project->ID).'"></li>';
     echo '<li class="project">';
     echo '<strong>'.$project->post_title.'</strong>';
-    echo $project->post_content;
+    $excerpt = explode('<!--more-->',$project->post_content);
+    echo $excerpt[0];
     echo '</li></a>';
     echo '</ul>';
   ?>
-  <ul class="projectList index"></ul>
-  <ul class="projectList index"></ul>
-  <ul class="projectList index"></ul>
-  <ul class="projectList index"></ul>
-  <ul class="projectList index"></ul>
 </div> <!-- end of viewport -->
 <div id="backgroundImage">
   <img src="<?php echo $image; ?>" alt="">

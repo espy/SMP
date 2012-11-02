@@ -1,5 +1,5 @@
 <?php
-  include 'dump_r.php';
+  //include 'dump_r.php';
   $shortLocale = substr(get_locale(), 0, 2);
 ?>
 

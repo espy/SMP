@@ -26,15 +26,15 @@ $book: 'ITCFranklinGothicW01-Bk 812647', Helvetica, sans;
 /* apply a natural box layout model to all elements */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
+
 .group:after {
   content: "";
   display: table;
   clear: both;
 }
 
-html {
-  height: 100%;
-}
+::-moz-selection { background: #fc7c00; color: #fff; text-shadow: none; }
+::selection { background: #fc7c00; color: #fff; text-shadow: none; }
 
 body{
   margin: 10px 0 0 0;
@@ -44,10 +44,14 @@ body{
   display:none;
 }
 
+h1, h2, h3{
+  font-weight: normal;
+}
+
 a{
   color: $black;
   text-decoration: none;
-  &:hover{
+  &:hover, &:visited, &:active{
     color: $black;
     text-decoration: none;
   }
@@ -70,7 +74,7 @@ b, strong {
     .viewport{
       margin-top: -1px;
       background: url('../images/bg_general.gif') fixed 270px;
-      &.studio{
+      &.studio, &.imprint{
         background: url('../images/bg_general_grey.gif') fixed 270px;
       }
     }
@@ -218,7 +222,7 @@ ul.projectList{
       min-height: 90px;
       margin-bottom: 22px;
       position: relative;
-      @include single-transition(background, .25s);
+      //@include single-transition(background, .25s);
       strong{
         display: block;
         margin-bottom: 7px;
@@ -245,6 +249,14 @@ ul.projectList{
   &.index{
     li.welcome{
       margin-top: 240px;
+      margin-bottom: 100px;
+      cursor: default;
+      &:hover{
+        background: none;
+        &:after{
+          display: none;
+        }
+      }
     }
     &:first-child{
       background: none;
@@ -297,6 +309,7 @@ ul.projectList{
         padding: 13px 40px 1px 40px;
         h1{
           margin-top:10px;
+          font-family: $demi;
         }
         &:hover{
           cursor: pointer;
@@ -344,6 +357,20 @@ ul.projectList{
           top: 0px;
           background: $white url("../images/arrow_down.png") no-repeat;
           background-position: 483px 27px;
+        }
+      }
+      .similarProjects{
+        h2{
+          margin: 60px 0 40px 0;
+        }
+        div{
+          width: 50%;
+          float:left;
+          a{
+            strong{
+              font-family: $demi;
+            }
+          }
         }
       }
     }
@@ -453,6 +480,9 @@ a.datasheet{
   &.studio{
     position: relative;
     top: 0;
+  }
+  &.press{
+    z-index:299;
   }
 }
 
@@ -813,6 +843,104 @@ a.datasheet{
   }
 }
 
+.viewport.press{
+  z-index:300;
+  position: relative;
+  h1{
+    font-family: $demi;
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    font-weight: normal;
+  }
+  h3{
+    font-family: $demi;
+    margin: 0 0 5px 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+  ul.newsItems{
+    width: 359px;
+    margin: 0 0 0 0;
+    padding: 76px 0 100px 0;
+    background: $white;
+    li{
+      list-style: none;
+      width: 339px;
+      margin: 0 0 40px 10px;
+      &>a{
+        @include border-radius(2px);
+        display: block;
+        padding: 10px;
+        @include single-transition(background none);
+        &:hover{
+          background: $hoverBG url("../images/arrow_right_padded.png") no-repeat 100% 29%;
+        }
+      }
+      .newsItemView{
+        display: none;
+      }
+    }
+  }
+  .newsItemView{
+    background: $white;
+    width: 360px;
+    padding: 25px 20px 10px;
+    position: fixed;
+    display: block;
+    right: 0;
+    top: -1px;
+    height: 100%;
+    img{
+      margin: 19px 0 0 0;
+      width: 100%;
+    }
+    .info{
+      margin: 38px 0 0 0;
+      .type{
+        width: 40%;
+        float:left;
+      }
+      .attachment{
+        width: 60%;
+        float:right;
+        text-align: right;
+        .datasheet{
+          margin-bottom: 0;
+        }
+      }
+    }
+    .description{
+      margin: 25px 0;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}
+
+.viewport.imprint{
+  z-index: 300;
+  position: relative;
+  top: -10px;
+  .contact{
+    margin: 132px 0 0 10px;
+    float:left;
+  }
+  .info{
+    margin: 120px 0 0 161px;
+    float: left;
+  }
+}
+
 .hidden{
   visibility: hidden;
+}
+
+@media only screen and (max-width: 1400px) {
+  header {
+    padding-left: 10px;
+    .contact {
+      left: 20px;
+    }
+  }
 }

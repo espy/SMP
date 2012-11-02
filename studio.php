@@ -110,8 +110,8 @@ function full_url(){
 <?php
 // About/Studio
 $aboutTitle = qtrans_use($shortLocale, get_post($aboutID)->post_title,false);
-$aboutContent = qtrans_use($shortLocale, get_post($aboutID)->post_content,false);
-echo '<div class="about group">';
+$aboutContent = wpautop( qtrans_use($shortLocale, get_post($aboutID)->post_content,false), true );
+echo '<div class="section about group">';
 echo '<div class="info">';
 echo '<strong class="'.$aboutTitle.'">'.$aboutTitle.'</strong>';
 echo '<p>'.$aboutContent.'</p>';
@@ -152,7 +152,7 @@ echo '</div>';
 
 
 // Partners
-echo '<div class="partners group">';
+echo '<div class="section partners group">';
 $partnersTitle = qtrans_use($shortLocale, get_post($partnersID)->post_title,false);
 echo '<strong class="'.$partnersTitle.'">'.$partnersTitle.'</strong>';
 
@@ -174,7 +174,7 @@ echo '</div>';
 
 
 // Staff
-echo '<div class="staff group">';
+echo '<div class="section staff group">';
 $staffTitle = qtrans_use($shortLocale, get_post($staffID)->post_title,false);
 echo '<strong class="'.$staffTitle.'">'.$staffTitle.'</strong>';
 
@@ -255,7 +255,7 @@ echo '</ul>';
 echo '</div>';
 
 // Jobs
-echo '<div class="jobs group">';
+echo '<div class="section jobs group">';
 $jobsTitle = qtrans_use($shortLocale, get_post($jobsID)->post_title,false);
 echo '<strong class="'.$jobsTitle.'">'.$jobsTitle.'</strong>';
 
@@ -290,7 +290,7 @@ echo $rightColumn;
 echo '</div>';
 
 // Awards
-echo '<div class="awards group">';
+echo '<div class="section awards group">';
 $awardsTitle = qtrans_use($shortLocale, get_post($awardsID)->post_title,false);
 echo '<strong class="'.$awardsTitle.'">'.$awardsTitle.'</strong>';
 
@@ -311,8 +311,7 @@ echo '</div>';
 ?>
 </div> <!-- end of viewport -->
 
-<div id="backgroundImage" data-gallery='<?php echo json_encode($gallery) ?>'>
-  <img src="<?php #echo $image; ?>" alt="">
-</div>
+<script>var scrollToSection = "<?php echo $currentSection ?>";</script>
+
 
 <?php get_footer(); ?>

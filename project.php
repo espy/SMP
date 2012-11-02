@@ -3,7 +3,7 @@
  * Template Name: Project
  */
 
-// include 'dump_r.php';
+//include 'dump_r.php';
 
 $project_categories = array('public', 'residential', 'hotel', 'office', 'exhibition', 'masterplanning');
 
@@ -15,6 +15,10 @@ $fields = array(
   array(type => 'project_category', en => 'Type', de => 'Kategorie', 'output' => true),
   array(type => 'datasheet', en => 'Data sheet', de => 'Datenblatt', 'output' => false),
   array(type => 'address', en => 'Address', de => 'Adresse', 'output' => false)
+);
+
+$translations = array(
+  similiarHeadline => array(en => 'Similar Projects', de => 'Ähnliche Projekte')
 );
 
 get_header();
@@ -40,8 +44,6 @@ function getImageNumber($isForURL = true){
 function sortProjects($a, $b) {
   return get_field('year', $b->ID) - get_field('year', $a->ID);
 }
-
-
 
 ?>
 <div class="viewport project">
@@ -71,7 +73,7 @@ function sortProjects($a, $b) {
 
       // Datasheet download button
       if($datasheet){
-        echo '<a class="datasheet" href="'.$datasheet['url'].'">'.$datasheetLabel.'</a>';
+        echo '<a class="datasheet" href="'.$datasheet['url'].'" target="_blank">'.$datasheetLabel.'</a>';
       }
 
       echo '<div class="description">'.$post->post_content.'</div>';
@@ -91,7 +93,6 @@ function sortProjects($a, $b) {
 
     endwhile;
     endif;
-    echo '</div></ul>';
 
     // get all projects
     $projectsID = 44;
@@ -103,9 +104,10 @@ function sortProjects($a, $b) {
     foreach($projects as $project){
       $category = get_field('project_category', $project->ID);
       if($category == $project_category){
-        array_push($projectsOfSameTypeAsPost, $project);
         if($project->ID == $post->ID){
           $nextProjectIndex = $index + 1;
+        } else {
+          array_push($projectsOfSameTypeAsPost, $project);
         }
         // if this is not the last project in this category, find ID of next project
         if($index == $nextProjectIndex){
@@ -118,6 +120,21 @@ function sortProjects($a, $b) {
     if($nextProjectIndex >= count($projectsOfSameTypeAsPost)){
       $nextProjectPageID = getFirstPostOfNextAvailableCategoryAfter($project_category);
     }
+
+    // small excursion to find similar projects
+    $randomProjectIndices = array_rand($projectsOfSameTypeAsPost, 2);
+    echo '<div class="similarProjects">';
+    echo '<h2>'.$translations['similiarHeadline'][$shortLocale].'</h2>';
+    foreach($randomProjectIndices as $randomProjectIndex){
+      echo '<div>';
+      echo '<a href="'.get_permalink($projectsOfSameTypeAsPost[$randomProjectIndex]->ID).'"><strong>'.get_field('year', $projectsOfSameTypeAsPost[$randomProjectIndex]->ID).'</strong>';
+      echo '<p>'.qtrans_use($shortLocale, get_post($projectsOfSameTypeAsPost[$randomProjectIndex])->post_title,false).'</p></a>';
+      echo '</div>';
+    }
+    echo '</div>';
+
+    // End of project description
+    echo '</div></ul>';
 
     function getFirstPostOfNextAvailableCategoryAfter($currentCategory){
       global $project_categories, $projects;
