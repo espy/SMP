@@ -88,7 +88,7 @@ function sortProjects($a, $b) {
         $mapString = rawurlencode($mapString);
         $mapString = str_replace("%0D%0A", "%20", $mapString);
         $mapSource = 'http://maps.googleapis.com/maps/api/staticmap?center='.$mapString.'&zoom=16&size=450x450&sensor=false&markers='.$mapString;
-        echo '<a href="https://maps.google.com/maps?q='.$mapString.'"><img class="map lazy" data-src="'.$mapSource.'" alt=""></a>';
+        echo '<a class="map" href="https://maps.google.com/maps?q='.$mapString.'"><img class="map lazy" data-src="'.$mapSource.'" alt=""></a>';
       }
 
     endwhile;
