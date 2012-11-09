@@ -205,52 +205,6 @@ if( get_field('staff_members', $staffID) ){
     }
   }
 }
-if( get_field('staff_members', $staffID) ){
-  while( has_sub_field('staff_members', $staffID) ){
-    $rowType = rand(1,5);
-    if($index == 0){
-      $front = '<div class="staffRow rowType_'.$rowType.' group"><div class="staffInfo"><ul>';
-      $back = '<div class="staffImages group"><ul>';
-    }
-    $name = get_sub_field('name');
-    $phone = get_sub_field('phone');
-    $email = get_sub_field('email');
-    $image = get_sub_field('image');
-    $front .= '<li><a class="staff_'.$index.' showOnHover" data-item="staff_'.$index.'" href="mailto:'.$email.'">'.$name.'</a></li>';
-    $back .= '<li class="staff_'.$index.'" data-item="staff_'.$index.'"><img src="'.$image["sizes"]["large"].'"/><div class="overlay"><span class="title">'.$translations['staffPhone'][$shortLocale].'</span><span class="phone">'.$phone.'</span></div></li>';
-    if($index == $staffPerRow-1){
-      $front .= '</ul></div>';
-      $back .= '</ul></div></div>';
-      echo $front.$back;
-      $index = 0;
-    } else {
-      $index++;
-    }
-  }
-}
-if( get_field('staff_members', $staffID) ){
-  while( has_sub_field('staff_members', $staffID) ){
-    $rowType = rand(1,5);
-    if($index == 0){
-      $front = '<div class="staffRow rowType_'.$rowType.' group"><div class="staffInfo"><ul>';
-      $back = '<div class="staffImages group"><ul>';
-    }
-    $name = get_sub_field('name');
-    $phone = get_sub_field('phone');
-    $email = get_sub_field('email');
-    $image = get_sub_field('image');
-    $front .= '<li><a class="staff_'.$index.' showOnHover" data-item="staff_'.$index.'" href="mailto:'.$email.'">'.$name.'</a></li>';
-    $back .= '<li class="staff_'.$index.'" data-item="staff_'.$index.'"><img src="'.$image["sizes"]["large"].'"/><div class="overlay"><span class="title">'.$translations['staffPhone'][$shortLocale].'</span><span class="phone">'.$phone.'</span></div></li>';
-    if($index == $staffPerRow-1){
-      $front .= '</ul></div>';
-      $back .= '</ul></div></div>';
-      echo $front.$back;
-      $index = 0;
-    } else {
-      $index++;
-    }
-  }
-}
 echo '</ul>';
 echo '</div>';
 

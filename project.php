@@ -88,7 +88,7 @@ function sortProjects($a, $b) {
         $mapString = rawurlencode($mapString);
         $mapString = str_replace("%0D%0A", "%20", $mapString);
         $mapSource = 'http://maps.googleapis.com/maps/api/staticmap?center='.$mapString.'&zoom=16&size=450x450&sensor=false&markers='.$mapString;
-        echo '<a class="map" href="https://maps.google.com/maps?q='.$mapString.'"><img class="map lazy" data-src="'.$mapSource.'" alt=""></a>';
+        echo '<a class="map" href="https://maps.google.com/maps?q='.$mapString.'"><img class="lazy" data-src="'.$mapSource.'" alt=""></a>';
       }
 
     endwhile;
@@ -122,16 +122,18 @@ function sortProjects($a, $b) {
     }
 
     // small excursion to find similar projects
-    $randomProjectIndices = array_rand($projectsOfSameTypeAsPost, 2);
-    echo '<div class="similarProjects">';
-    echo '<h2>'.$translations['similiarHeadline'][$shortLocale].'</h2>';
-    foreach($randomProjectIndices as $randomProjectIndex){
-      echo '<div>';
-      echo '<a href="'.get_permalink($projectsOfSameTypeAsPost[$randomProjectIndex]->ID).'"><strong>'.get_field('year', $projectsOfSameTypeAsPost[$randomProjectIndex]->ID).'</strong>';
-      echo '<p>'.qtrans_use($shortLocale, get_post($projectsOfSameTypeAsPost[$randomProjectIndex])->post_title,false).'</p></a>';
+    if(count($projectsOfSameTypeAsPost) > 2){
+      $randomProjectIndices = array_rand($projectsOfSameTypeAsPost, 2);
+      echo '<div class="similarProjects">';
+      echo '<h2>'.$translations['similiarHeadline'][$shortLocale].'</h2>';
+      foreach($randomProjectIndices as $randomProjectIndex){
+        echo '<div>';
+        echo '<a href="'.get_permalink($projectsOfSameTypeAsPost[$randomProjectIndex]->ID).'"><strong>'.get_field('year', $projectsOfSameTypeAsPost[$randomProjectIndex]->ID).'</strong>';
+        echo '<p>'.qtrans_use($shortLocale, get_post($projectsOfSameTypeAsPost[$randomProjectIndex])->post_title,false).'</p></a>';
+        echo '</div>';
+      }
       echo '</div>';
     }
-    echo '</div>';
 
     // End of project description
     echo '</div></ul>';

@@ -166,6 +166,11 @@ function initListeners() {
     redrawLayout();
     //History.pushState(null, null, $(this).attr('href'));
   });
+$('.viewport.press ul.newsItems a').mouseenter(function(event){
+    event.preventDefault();
+    $('.viewport>.newsItemView').remove();
+    redrawLayout();
+  });
   $(window).resize(function(){
     redrawLayout();
   });
@@ -241,16 +246,21 @@ function redrawLayout() {
   lastSliderPosition = null;
   // make project lists full height
   var viewportHeight = $(window).height() - 50;
-  var targetHeight = viewportHeight;
+  var targetHeight = viewportHeight + 40;
+  var columnPadding = 0;
+  var doSetHeights = false;
   $('ul.projectList.projects').each(function(){
-    if(!$(this).data('original-height')){
-      $(this).data('original-height', $(this).height());
+    var h = $(this).height();
+    if(h !== undefined && !$(this).data('original-height') && h > 0){
+      $(this).data('original-height', h);
+      doSetHeights = true;
     }
-    if($(this).data('original-height') > targetHeight){
-      targetHeight = $(this).height();
+    if($(this).data('original-height') >= targetHeight){
+      targetHeight = h;
+      columnPadding = 100;
     }
   });
-  $('ul.projectList.projects').height(targetHeight + 70);
+  if(doSetHeights) $('ul.projectList.projects').height(targetHeight + columnPadding);
   // make first index column full height if it isn't already
   var indexColumnHeight = $('.projectList.index:first-child').height();
   if(indexColumnHeight !== 0 && indexColumnHeight < viewportHeight){
@@ -273,7 +283,7 @@ function redrawLayout() {
     $('.previous span, .next span, .nextProject span').css('margin-top', imageHeight/2);
     $('.nextNavi').css({'right': 0});
   }
-  if($('.viewport.press').length > 0){
+  if($('.viewport.press').length > 0 && $('.viewport>.newsItemView').length > 0){
     var newsItemViewHeight = $('.viewport>.newsItemView .description').offset().top + $('.viewport>.newsItemView .description').height();
     if( newsItemViewHeight > $(window).height() - 50){
       $('.newsItemView').css('position', 'absolute');
