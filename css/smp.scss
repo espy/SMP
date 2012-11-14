@@ -65,6 +65,7 @@ b, strong {
   max-width: 1400px;
   width: 100%;
   margin: 0px auto;
+  overflow-x: hidden;
   #content {
     margin: 0 0 0 $column;
     width: 12 * $halfColumn + 2 * $gutter;
@@ -193,7 +194,7 @@ ul.projectList{
   margin: 0;
   padding:0;
   min-height: 5px;
-  @include single-transition(background, .25s);
+  //@include single-transition(background, .25s);
   a{
     position: relative;
     display: block;
@@ -209,7 +210,7 @@ ul.projectList{
   &.active{
     a{
       &:first-child{
-        margin-top: 126px;
+        margin-top: 131px;
         display: block;
       }
     }
@@ -323,6 +324,9 @@ ul.projectList{
           &:nth-child(odd){
             width: 225px;
           }
+          span{
+            text-transform: capitalize;
+          }
         }
       }
       h2 {
@@ -356,6 +360,7 @@ ul.projectList{
           top: 0px;
           background: $white url("../images/arrow_down.png") no-repeat;
           background-position: 483px 27px;
+          z-index: 1000;
         }
       }
       .similarProjects{
@@ -481,7 +486,7 @@ a.datasheet{
     top: 0;
   }
   &.press{
-    z-index:299;
+    //z-index:299;
   }
 }
 
@@ -741,7 +746,7 @@ a.datasheet{
           display: block;
           position: absolute;
           right: 0;
-          width: 149px;
+          width: 150px;
           background: $whiteTransparentHover;
           top: 122px;
           height: 70px;
@@ -843,7 +848,7 @@ a.datasheet{
 }
 
 .viewport.press{
-  z-index:300;
+  //z-index:300;
   position: relative;
   h1{
     font-family: $demi;
@@ -889,7 +894,7 @@ a.datasheet{
     display: block;
     right: 0;
     top: -1px;
-    height: 100%;
+    height: auto;
     img{
       margin: 19px 0 0 0;
       width: 100%;
@@ -958,7 +963,7 @@ $smallColumn: 136px;
 $smallGutter: 8px;
 
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px), screen and (max-height: 700px){
   body{
     margin: 8px 0 0 0;
     //font: normal 60%/1.28571429 'ITCFranklinGothicW01-Bk 812647', Helvetica, sans;

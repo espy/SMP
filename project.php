@@ -76,7 +76,7 @@ function sortProjects($a, $b) {
         echo '<a class="datasheet" href="'.$datasheet['url'].'" target="_blank">'.$datasheetLabel.'</a>';
       }
 
-      echo '<div class="description">'.$post->post_content.'</div>';
+      echo '<div class="description">'.wpautop( $post->post_content, true ).'</div>';
 
       if($address){
         // Address
@@ -122,7 +122,7 @@ function sortProjects($a, $b) {
     }
 
     // small excursion to find similar projects
-    if(count($projectsOfSameTypeAsPost) > 2){
+    if(count($projectsOfSameTypeAsPost) >= 2){
       $randomProjectIndices = array_rand($projectsOfSameTypeAsPost, 2);
       echo '<div class="similarProjects">';
       echo '<h2>'.$translations['similiarHeadline'][$shortLocale].'</h2>';

@@ -124,7 +124,7 @@ if( get_field('links', $aboutID) ){
   while( has_sub_field('links', $aboutID) ){
     $url = get_sub_field('url');
     $a = get_sub_field('a_'.$shortLocale);
-    echo '<a class="datasheet showOnHover" href="'.$url.'">'.$a.'</a>';
+    echo '<a class="datasheet showOnHover" href="'.$url.'" target="_blank">'.$a.'</a>';
   }
   echo "</li>";
 }
@@ -134,7 +134,7 @@ if( get_field('attachments', $aboutID) ){
     echo "<li>";
     $url = get_sub_field('attachment');
     $a = get_sub_field('a_'.$shortLocale);
-    echo '<a class="datasheet showOnHover" href="'.$url["url"].'">'.$a.'</a>';
+    echo '<a class="datasheet showOnHover" href="'.$url["url"].'" target="_blank">'.$a.'</a>';
     echo "</li>";
   }
 }
@@ -214,7 +214,7 @@ $jobsTitle = qtrans_use($shortLocale, get_post($jobsID)->post_title,false);
 echo '<strong class="'.$jobsTitle.'">'.$jobsTitle.'</strong>';
 
 echo '<div class="subline">'.get_field('subline_'.$shortLocale, $jobsID).'</div>';
-echo '<div class="general">'.qtrans_use($shortLocale, get_post($jobsID)->post_content, false).'</div>';
+echo '<div class="general">'.wpautop(qtrans_use($shortLocale, get_post($jobsID)->post_content, false), true).'</div>';
 
 $leftColumn = '<ul class="left">';
 $rightColumn = '<ul>';
@@ -227,7 +227,7 @@ if( get_field('job', $jobsID) ){
     $attachment = get_sub_field('attachment');
     $item .= '<strong>'.$title.'</strong>';
     $item .= '<p>'.$description.'</p>';
-    $item .= '<a class="datasheet" href="'.$attachment['url'].'">'.$translations['jobAttachment'][$shortLocale].'</a>';
+    $item .= '<a class="datasheet" target="_blank" href="'.$attachment['url'].'">'.$translations['jobAttachment'][$shortLocale].'</a>';
     $item .= "</li>";
     if($index % 2 == 0){
       $leftColumn .= $item;

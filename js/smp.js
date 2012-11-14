@@ -10,6 +10,7 @@ var lazyBGImage;
 var lastSliderPosition;
 var hashes;
 
+var wrapperMaxWidth;
 var viewportWidth;
 var columnWidth;
 var gutter;
@@ -145,9 +146,13 @@ function initListeners() {
   if($('.viewport.studio').length > 0){
     $('.wrapper').mousemove(function(event){
       var xPos = event.pageX  - $(this).offset().left;
+      var yPos = event.pageY  - $(this).offset().top;
       if(xPos > columnWidth && xPos < 2*columnWidth){
-        $('.viewport.studio .showOnHover').addClass('isHovering');
-        $('.viewport.studio .hideOnHover').addClass('isHovering');
+        // don't do this if over stage image
+        if(yPos > $('#backgroundImage').height()){
+          $('.viewport.studio .showOnHover').addClass('isHovering');
+          $('.viewport.studio .hideOnHover').addClass('isHovering');
+        }
       } else {
         $('.viewport.studio .showOnHover').removeClass('isHovering');
         $('.viewport.studio .hideOnHover').removeClass('isHovering');
@@ -230,10 +235,12 @@ function showBGImage() {
 // Check which media query we're in and set widths accordingly
 function setWidths() {
   if($(window).width() <= 1200){
+    wrapperMaxWidth = 1024;
     viewportWidth = 810;
     columnWidth = 136;
     gutter = 8;
   } else {
+    wrapperMaxWidth = 1400;
     viewportWidth = 1115;
     columnWidth = 170;
     gutter = 10;
@@ -249,18 +256,43 @@ function redrawLayout() {
   var targetHeight = viewportHeight + 40;
   var columnPadding = 0;
   var doSetHeights = false;
-  $('ul.projectList.projects').each(function(){
+  $('ul.projectList.projects, ul.newsItems').each(function(){
     var h = $(this).height();
     if(h !== undefined && !$(this).data('original-height') && h > 0){
+      console.log("setheight: ",h);
       $(this).data('original-height', h);
       doSetHeights = true;
     }
     if($(this).data('original-height') >= targetHeight){
+      console.log("don't setheight: ",h);
       targetHeight = h;
       columnPadding = 100;
+    } else {
+      doSetHeights = true;
     }
   });
-  if(doSetHeights) $('ul.projectList.projects').height(targetHeight + columnPadding);
+  if(doSetHeights) $('ul.projectList.projects, ul.newsItems').height(targetHeight + columnPadding);
+  // Press layout
+  if($('.viewport.press').length > 0){
+    var offset = ($(window).width() - wrapperMaxWidth) / 2;
+    var wrapperWidth = wrapperMaxWidth + offset;
+    if(offset < 0) offset = 0;
+    if(wrapperWidth > 500){
+      $('.wrapper').css({'margin': '0 0 0 '+offset+'px', 'max-width': wrapperWidth});
+      $('.viewport').width(wrapperWidth - columnWidth);
+    }
+    $('.viewport>.newsItemView').css('height', 'auto');
+    var newsItemViewHeight = $('.viewport>.newsItemView').height() + parseInt($('.viewport>.newsItemView').css('padding-top'), 10) + parseInt($('.viewport>.newsItemView').css('padding-bottom'), 10);
+    if(newsItemViewHeight < $(window).height() - gutter){
+      newsItemViewHeight = $(window).height() - gutter;
+      $('.viewport>.newsItemView').css('height', '100%');
+    }
+    if(newsItemViewHeight > $('ul.newsItems').height()){
+      $('ul.newsItems').height(newsItemViewHeight);
+    } else {
+      $('.viewport>.newsItemView').css('height', '100%');
+    }
+  }
   // make first index column full height if it isn't already
   var indexColumnHeight = $('.projectList.index:first-child').height();
   if(indexColumnHeight !== 0 && indexColumnHeight < viewportHeight){
@@ -268,7 +300,7 @@ function redrawLayout() {
   }
   scaleBGImage();
   // layout the individual project page with its gallery
-  if($('.viewport.project, .viewport.projects, .viewport.index' ).length > 0){
+  if($('.viewport.project, .viewport.projects, .viewport.index, .viewport.press' ).length > 0){
     $('.viewport.project').height($('.projectDescription').height());
     $('.prevNavi, .nextNavi').height(viewportHeight);
     $('.previous span, .next span').css('margin-top', viewportHeight/2);
@@ -279,6 +311,12 @@ function redrawLayout() {
     $('#backgroundImage').css({'width': targetWidth});
   }
   if($('.viewport.studio').length > 0){
+    var offset = ($(window).width() - wrapperMaxWidth) / 2;
+    var wrapperWidth = wrapperMaxWidth + offset;
+    if(offset < 0) offset = 0;
+    if(wrapperWidth > 500){
+      $('.wrapper').css({'margin': '0 0 0 '+offset+'px', 'max-width': wrapperWidth});
+    }
     var imageHeight = $(window).height() - 110;
     $('.previous span, .next span, .nextProject span').css('margin-top', imageHeight/2);
     $('.nextNavi').css({'right': 0});
