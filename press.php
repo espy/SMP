@@ -64,7 +64,7 @@ echo '</ul>';
 </div> <!-- end of viewport -->
 
 <div id="backgroundImage" class="press">
-  <img src="" alt="">
+  <img alt="">
 </div>
 
 <?php get_footer(); ?>
