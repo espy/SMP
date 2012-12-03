@@ -51,6 +51,8 @@ get_header(); ?>
   <img src="" alt="">
 </div>
 
+<div class="cache"></div>
+
 <!-- LOOP ends here -->
 <?php endwhile; else: ?>
 <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>

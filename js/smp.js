@@ -31,6 +31,14 @@ $(window).load(function() {
     //$(document.body).animate({scrollTop: target}, 200);
     $.scrollTo(target, 250, {axis:'y'});
   }
+  $('.projectList .project').each(function(){
+    var imgSrc = $(this).data('image');
+    $('.cache').append('<img src="'+imgSrc+'"/>');
+  });
+  // Lazy load lazy images
+  $('img.lazy').each(function(){
+    $(this).attr('src', $(this).data('src'));
+  });
 });
 
 function initListeners() {
