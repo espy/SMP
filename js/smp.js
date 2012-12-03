@@ -276,17 +276,17 @@ function redrawLayout() {
   var targetHeight = viewportHeight + 40;
   var columnPadding = 0;
   var doSetHeights = false;
-  $('ul.projectList.projects, ul.newsItems').each(function(){
+  $('ul.projectList.projects, ul.newsItems').each(function(i){
     var h = $(this).height();
     if(h !== undefined && !$(this).data('original-height') && h > 0){
       $(this).data('original-height', h);
       doSetHeights = true;
-    }
-    if($(this).data('original-height') >= targetHeight){
-      targetHeight = h;
-      columnPadding = 100;
-    } else {
-      doSetHeights = true;
+      if($(this).data('original-height') >= targetHeight){
+        targetHeight = h;
+        columnPadding = 100;
+      } else {
+        doSetHeights = true;
+      }
     }
   });
   if(doSetHeights) $('ul.projectList.projects, ul.newsItems').height(targetHeight + columnPadding);
