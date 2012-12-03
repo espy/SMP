@@ -42,15 +42,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/css\/smp.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/css\/smp.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/css\/smp.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -63,6 +54,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/css\/smp.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/css\/smp.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/js\/modernizr.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -74,6 +74,15 @@
       "outputAbbreviatedPath" : "\/js\/modernizr-ck.js",
       "fileType" : 64
     },
+    "\/sidebar.php" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sidebar.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/js\/jquery.waitforimages.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -84,15 +93,6 @@
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/js\/jquery.waitforimages-ck.js",
       "fileType" : 64
-    },
-    "\/sidebar.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sidebar.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/partners.php" : {
       "ignoreWasSetByUser" : 0,
@@ -121,15 +121,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/boilerplate-admin\/admin-style.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/boilerplate-admin\/admin-style.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/dump_r.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -138,6 +129,15 @@
       "inputAbbreviatedPath" : "\/dump_r.php",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
+    },
+    "\/boilerplate-admin\/admin-style.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/boilerplate-admin\/admin-style.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/images\/arrow_left.png" : {
       "ignoreWasSetByUser" : 0,
@@ -219,6 +219,15 @@
       "initialSize" : 57532,
       "fileType" : 8192
     },
+    "\/project.php" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/project.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/images\/arrow_down.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -236,15 +245,6 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/page.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/project.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/project.php",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -299,15 +299,6 @@
       "outputAbbreviatedPath" : "\/js\/jquery.viewport.mini-ck.js",
       "fileType" : 64
     },
-    "\/awards.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/awards.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/_home.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -332,6 +323,15 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/index.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/awards.php" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/awards.php",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -430,7 +430,7 @@
       "fileType" : 2048
     },
     "\/js\/jquery.history.js" : {
-      "ignoreWasSetByUser" : 0,
+      "ignoreWasSetByUser" : 1,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
@@ -480,12 +480,12 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/boilerplate-admin\/admin-menu.php" : {
+    "\/functions.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/boilerplate-admin\/admin-menu.php",
+      "inputAbbreviatedPath" : "\/functions.php",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -498,12 +498,12 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/functions.php" : {
+    "\/boilerplate-admin\/admin-menu.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/functions.php",
+      "inputAbbreviatedPath" : "\/boilerplate-admin\/admin-menu.php",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -517,17 +517,6 @@
       "outputAbbreviatedPath" : "\/images\/arrow_right.png",
       "initialSize" : 982,
       "fileType" : 8192
-    },
-    "\/js\/history.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/history.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/js\/history-ck.js",
-      "fileType" : 64
     },
     "\/js\/jquery.scrollTo-1.4.3.1-min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -656,30 +645,30 @@
     {
       "type" : 0,
       "position" : 0,
-      "linkedFileAbbreviatedPath" : "\/js\/jquery.viewport.mini.js",
+      "linkedFileAbbreviatedPath" : "\/js\/jquery.history.js",
       "baseFileAbbreviatedPath" : "\/js\/smp.js",
-      "followForSyntaxChecking" : 1
+      "followForSyntaxChecking" : 0
     },
     {
       "type" : 0,
       "position" : 1,
-      "linkedFileAbbreviatedPath" : "\/js\/jquery.history.js",
+      "linkedFileAbbreviatedPath" : "\/js\/jquery.viewport.mini.js",
       "baseFileAbbreviatedPath" : "\/js\/smp.js",
-      "followForSyntaxChecking" : 1
+      "followForSyntaxChecking" : 0
     },
     {
       "type" : 0,
       "position" : 2,
       "linkedFileAbbreviatedPath" : "\/js\/jquery.waitforimages.js",
       "baseFileAbbreviatedPath" : "\/js\/smp.js",
-      "followForSyntaxChecking" : 1
+      "followForSyntaxChecking" : 0
     },
     {
       "type" : 0,
       "position" : 3,
       "linkedFileAbbreviatedPath" : "\/js\/underscore.js",
       "baseFileAbbreviatedPath" : "\/js\/smp.js",
-      "followForSyntaxChecking" : 1
+      "followForSyntaxChecking" : 0
     }
   ],
   "projectSettings" : {

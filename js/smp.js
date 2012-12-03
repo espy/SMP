@@ -98,7 +98,7 @@ function initListeners() {
   // Project - Gallery button behaviour
   $('a.next, a.previous').click(function(event){
     event.preventDefault();
-    History.pushState(null, null, $(this).attr('href'));
+    History.pushState({}, "", $(this).attr('href'));
   });
   // Project - keyboard navigation for the gallery
   $(document).keydown(function(e){
@@ -288,6 +288,12 @@ function redrawLayout() {
         doSetHeights = true;
       }
     }
+  });
+  // IE ignores max-width, so we just position the wrapper here
+  $('html.ie.lte9').each(function(){
+    var leftMargin = $(window).width()-wrapperMaxWidth;
+    console.log("IE FUCKUP", leftMargin);
+    $('.wrapper').css('margin-left', leftMargin);
   });
   if(doSetHeights) $('ul.projectList.projects, ul.newsItems').height(targetHeight + columnPadding);
   // Press layout
