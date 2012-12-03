@@ -15,6 +15,8 @@ var viewportWidth;
 var columnWidth;
 var gutter;
 
+var overrideStudioHover = false;
+
 $(window).ready(function() {
   lazyBGImage = _.debounce(showBGImage, 100);
   initListeners();
@@ -162,8 +164,10 @@ function initListeners() {
           $('.viewport.studio .hideOnHover').addClass('isHovering');
         }
       } else {
-        $('.viewport.studio .showOnHover').removeClass('isHovering');
-        $('.viewport.studio .hideOnHover').removeClass('isHovering');
+        if(!overrideStudioHover){
+          $('.viewport.studio .showOnHover').removeClass('isHovering');
+          $('.viewport.studio .hideOnHover').removeClass('isHovering');
+        }
       }
     });
     var throttleScroll = _.throttle(onThrottleScroll, 200);
@@ -171,6 +175,14 @@ function initListeners() {
       throttleScroll();
     });
   }
+  // Studio - Show partner CVs on image hover
+  $('.partners img').hover(function(){
+    overrideStudioHover = true;
+    $(this).siblings('p.showOnHover').addClass('isHovering');
+  }, function(){
+    overrideStudioHover = false;
+    $(this).siblings('p.showOnHover').removeClass('isHovering');
+  });
   // Press - load news item
   $('.viewport.press ul.newsItems a').click(function(event){
     event.preventDefault();

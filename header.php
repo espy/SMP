@@ -66,7 +66,7 @@
         </ul>
         <div class="contact" role="contentinfo">
           <a class="phone" href="tel:49 40 369 73 70">+49 40 369 73 70</a>
-          <a class="mail" href="mailto:info@störmer-partner.de">info@störmer-partner.de</a>
+          <a class="mail" href="mailto:info@stoermer-partner.de">info@stoermer-partner.de</a>
           <?php
           $shortLocale = substr(get_locale(), 0, 2);
           $imprintID = 84;
