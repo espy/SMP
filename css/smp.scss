@@ -113,6 +113,7 @@ header{
   #nav{
     margin: 55px 0 0 $gutter;
     padding: 0;
+    font-size: 13px;
     ul{
       padding: 0 0 0 20px;
     }
@@ -194,6 +195,7 @@ ul.projectList{
   margin: 0;
   padding:0;
   min-height: 5px;
+  font-size: 13px;
   //@include single-transition(background, .25s);
   a{
     position: relative;
@@ -926,6 +928,7 @@ a.datasheet{
   z-index: 300;
   position: relative;
   top: -10px;
+  font-size: 13px;
   .contact{
     margin: 132px 0 0 10px;
     float:left;
@@ -1002,6 +1005,7 @@ $smallGutter: 8px;
     }
     #nav{
       margin: 55px 0 0 8px;
+      font-size: 12px;
       ul{
         padding: 0 0 0 20px;
       }
@@ -1023,6 +1027,7 @@ $smallGutter: 8px;
   }
   ul.projectList{
     width: $smallColumn;
+    font-size: 12px;
     li{
       list-style: none;
       &.project{
@@ -1394,6 +1399,7 @@ $smallGutter: 8px;
     z-index: 300;
     position: relative;
     top: -8px;
+    font-size: 12px;
     .contact{
       margin: 132px 0 0 $smallGutter;
       float:left;

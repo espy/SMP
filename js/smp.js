@@ -234,7 +234,7 @@ function showBGImage() {
 
 // Check which media query we're in and set widths accordingly
 function setWidths() {
-  if($(window).width() <= 1200){
+  if($(window).width() <= 1200 || $(window).height() <= 700){
     wrapperMaxWidth = 1024;
     viewportWidth = 810;
     columnWidth = 136;
@@ -259,12 +259,10 @@ function redrawLayout() {
   $('ul.projectList.projects, ul.newsItems').each(function(){
     var h = $(this).height();
     if(h !== undefined && !$(this).data('original-height') && h > 0){
-      console.log("setheight: ",h);
       $(this).data('original-height', h);
       doSetHeights = true;
     }
     if($(this).data('original-height') >= targetHeight){
-      console.log("don't setheight: ",h);
       targetHeight = h;
       columnPadding = 100;
     } else {
