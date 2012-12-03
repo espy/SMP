@@ -242,13 +242,7 @@ ul.projectList{
         background: $hoverBG;
         @include border-radius(2px);
         cursor: pointer;
-        &:after{
-          content: "⟶";
-          display: block;
-          position: absolute;
-          right: 10px;
-          bottom: 5px;
-        }
+        background: $hoverBG url("../images/arrow_right.png") no-repeat  93% 90%;
       }
     }
   }

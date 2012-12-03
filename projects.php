@@ -48,7 +48,7 @@ get_header(); ?>
   ?>
 </div> <!-- end of viewport -->
 <div id="backgroundImage">
-  <img src="" alt="">
+  <img alt="">
 </div>
 
 <div class="cache"></div>
