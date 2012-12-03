@@ -10,7 +10,7 @@ $project_categories = array('public', 'residential', 'hotel', 'office', 'exhibit
 $fields = array(
   array(type => 'year', en => 'Year', de => 'Fertigstellung', 'output' => true),
   array(type => 'contest', en => 'Contest', de => 'Wettbewerb', 'output' => true),
-  array(type => 'area', en => 'Area', de => 'BGF', 'output' => true, 'suffix_de' => 'qm', 'suffix_en' => 'sqm'),
+  array(type => 'area', en => 'Area', de => 'BGF', 'output' => true, 'suffix_de' => 'qm', 'suffix_en' => 'sqm', 'class' => 'lowercase'),
   array(type => 'client', en => 'Client', de => 'Bauherr'),
   array(type => 'project_category', en => 'Type', de => 'Kategorie', 'output' => true),
   array(type => 'datasheet', en => 'Data sheet', de => 'Datenblatt', 'output' => false),
@@ -63,8 +63,12 @@ function sortProjects($a, $b) {
         $$variableNameValue = get_field($field['type'], $post->ID);
         if($field['output'] === true && $$variableNameValue != null){
           $suffix = ' '. $field['suffix_'.$shortLocale];
+          $class = '';
+          if($field['class']){
+            $class = ' class="'.$field['class'].'"';
+          }
           echo '<div class="field"><h2>'.$field[$shortLocale].'</h2>';
-          echo '<span>'.$$variableNameValue.$suffix.'</span></div>';
+          echo '<span'.$class.'>'.$$variableNameValue.$suffix.'</span></div>';
         }
       }
       echo '</div>';

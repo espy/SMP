@@ -332,6 +332,9 @@ ul.projectList{
           }
           span{
             text-transform: capitalize;
+            &.lowercase{
+              text-transform: lowercase;
+            }
           }
         }
       }
