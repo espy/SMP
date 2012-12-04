@@ -181,7 +181,7 @@ echo '<strong class="'.$staffTitle.'">'.$staffTitle.'</strong>';
 echo '<ul>';
 $staffPerRow = 3;
 $index = 0;
-
+$counter = 0;
 if( get_field('staff_members', $staffID) ){
   while( has_sub_field('staff_members', $staffID) ){
     $rowType = rand(1,5);
@@ -194,8 +194,8 @@ if( get_field('staff_members', $staffID) ){
     $email = get_sub_field('email');
     $image = get_sub_field('image');
     $front .= '<li><a class="staff_'.$index.' showOnHover" data-item="staff_'.$index.'" href="mailto:'.$email.'">'.$name.'</a></li>';
-    $back .= '<li class="staff_'.$index.'" data-item="staff_'.$index.'"><img src="'.$image["sizes"]["large"].'"/><div class="overlay"><span class="title">'.$translations['staffPhone'][$shortLocale].'</span><span class="phone">'.$phone.'</span></div></li>';
-    if($index == $staffPerRow-1){
+    $back .= '<li class="staff_'.$index.'" data-item="staff_'.$index.'"><img class="lazy" data-src="'.$image["sizes"]["large"].'"/><div class="overlay"><span class="title">'.$translations['staffPhone'][$shortLocale].'</span><span class="phone">'.$phone.'</span></div></li>';
+    if($index == $staffPerRow-1 || $counter == count(get_field('staff_members', $staffID))-1){
       $front .= '</ul></div>';
       $back .= '</ul></div></div>';
       echo $front.$back;
@@ -203,6 +203,7 @@ if( get_field('staff_members', $staffID) ){
     } else {
       $index++;
     }
+    $counter++;
   }
 }
 echo '</ul>';
@@ -211,10 +212,12 @@ echo '</div>';
 // Jobs
 echo '<div class="section jobs group">';
 $jobsTitle = qtrans_use($shortLocale, get_post($jobsID)->post_title,false);
+$attachment = get_field('attachment', $jobsID);
 echo '<strong class="'.$jobsTitle.'">'.$jobsTitle.'</strong>';
 
 echo '<div class="subline">'.get_field('subline_'.$shortLocale, $jobsID).'</div>';
-echo '<div class="general">'.wpautop(qtrans_use($shortLocale, get_post($jobsID)->post_content, false), true).'</div>';
+echo '<div class="general">'.wpautop(qtrans_use($shortLocale, get_post($jobsID)->post_content, false), true);
+echo '<a class="datasheet" target="_blank" href="'.$attachment['url'].'">'.$translations['jobAttachment'][$shortLocale].'</a></div>';
 
 $leftColumn = '<ul class="left">';
 $rightColumn = '<ul>';
@@ -224,10 +227,9 @@ if( get_field('job', $jobsID) ){
     $item = '<li>';
     $title = get_sub_field('title_'.$shortLocale);
     $description = get_sub_field('description_'.$shortLocale);
-    $attachment = get_sub_field('attachment');
     $item .= '<strong>'.$title.'</strong>';
     $item .= '<p>'.$description.'</p>';
-    $item .= '<a class="datasheet" target="_blank" href="'.$attachment['url'].'">'.$translations['jobAttachment'][$shortLocale].'</a>';
+    //$item .= '<a class="datasheet" target="_blank" href="'.$attachment['url'].'">'.$translations['jobAttachment'][$shortLocale].'</a>';
     $item .= "</li>";
     if($index % 2 == 0){
       $leftColumn .= $item;

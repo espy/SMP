@@ -185,7 +185,7 @@ footer{
 }
 
 .listTitles{
-  position: fixed;
+  position: absolute;
   z-index:200;
   .listTitle{
     width: $column - $gutter;
@@ -584,6 +584,7 @@ a.datasheet{
         position:relative;
         height: 405px;
         span{
+          display: block;
           font-family: $demi;
           font-size: 18px;
           margin: 5px 10px 0 10px;
@@ -838,7 +839,7 @@ a.datasheet{
         width:170px;
         padding:10px;
         float:left;
-        min-height: 152px;
+        min-height: 270px;
         h2{
           font-family: $demi;
           font-size: 12px;
@@ -1175,7 +1176,7 @@ $smallGutter: 8px;
       }
     }
     .partners{
-      margin: 89px 0 0 $smallGutter;
+      margin: 269px 0 0 $smallGutter;
       ul{
         li{
           width: 511px * .8;
