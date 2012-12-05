@@ -100,8 +100,6 @@ function initListeners() {
   // Project - Gallery button behaviour
   $('a.next, a.previous').click(function(event){
     event.preventDefault();
-    console.log("event",event);
-    console.log("href",$(this).attr('href'));
     History.pushState({}, "", $(this).attr('href'));
   });
   // Project - keyboard navigation for the gallery
@@ -369,11 +367,23 @@ function scaleBGImage() {
   if($('#backgroundImage').hasClass('studio')){
     var targetHeight = $(window).height() - 110;
     dimensions = getFitAroundSizes($('#backgroundImage img'), targetWidth, targetHeight);
+    if(!dimensions){
+      _.delay(function(){
+        scaleBGImage();
+      }, 500);
+      return;
+    }
     $('#backgroundImage, #backgroundImage .columnsOverlay').height(targetHeight);
     $('#backgroundImage').width(targetWidth - 30);
     $('#backgroundImage img').width(dimensions[0] - 30).height(dimensions[1]);
   } else {
     dimensions = getFitAroundSizes($('#backgroundImage img'), targetWidth, $(window).height());
+    if(!dimensions){
+      _.delay(function(){
+        scaleBGImage();
+      }, 500);
+      return;
+    }
     $('#backgroundImage img').width(dimensions[0]).height(dimensions[1]);
   }
 }
@@ -454,6 +464,9 @@ function getFitAroundSizes(element, targetWidth, targetHeight){
   } else {
     objectWidth = $(element).width();
     objectHeight = $(element).height();
+    if(objectWidth <= 100 || objectHeight <= 100){
+      return null;
+    }
     $(element).data('original-width', objectWidth);
     $(element).data('original-height', objectHeight);
   }
