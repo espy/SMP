@@ -121,7 +121,7 @@ function sortProjects($a, $b) {
       }
     }
     // if this was the last project in a category, find next category
-    if($nextProjectIndex >= count($projectsOfSameTypeAsPost)){
+    if($nextProjectIndex > count($projectsOfSameTypeAsPost)){
       $nextProjectPageID = getFirstPostOfNextAvailableCategoryAfter($project_category);
     }
 
