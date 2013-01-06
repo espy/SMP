@@ -274,7 +274,7 @@ function redrawLayout() {
   setWidths();
   lastSliderPosition = null;
   // make project lists full height
-  var viewportHeight = $(window).height() - 50;
+  var viewportHeight = $(window).height() - (2*gutter);
   var targetHeight = viewportHeight + 40;
   var columnPadding = 0;
   var doSetHeights = false;
@@ -331,7 +331,7 @@ function redrawLayout() {
     $('.prevNavi, .nextNavi').height(viewportHeight);
     $('.previous span, .next span').css('margin-top', viewportHeight/2);
     $('.repeat span, .nextProject span').css('margin-top', viewportHeight/4.4);
-    $('.projectSlider').css('margin-top', $(window).height() - 103 - $('.projectSlider h1').height());
+    $('.projectSlider').css('margin-top', $(window).height() - 53 - $('.projectSlider h1').height());
     var targetWidth = ($(window).width() - ($(window).width() - viewportWidth)/2)-gutter;
     $('#backgroundImage, .nextNavi').css({'right': gutter});
     $('#backgroundImage').css({'width': targetWidth});
@@ -343,7 +343,7 @@ function redrawLayout() {
     if(wrapperWidth > 500){
       $('.wrapper').css({'margin': '0 0 0 '+offset+'px', 'max-width': wrapperWidth});
     }
-    var imageHeight = $(window).height() - 110;
+    var imageHeight = $(window).height() - (2*gutter);
     $('.previous span, .next span, .nextProject span').css('margin-top', imageHeight/2);
     $('.nextNavi').css({'right': 0});
   }
@@ -362,7 +362,8 @@ function redrawLayout() {
 
 function scaleBGImage() {
   var bgImage = $('#backgroundImage img')[0];
-  var targetWidth = ($(window).width() - ($(window).width() - viewportWidth)/2)-gutter;
+  //var targetWidth = ($(window).width() - ($(window).width() - viewportWidth)/2)-gutter;
+  var targetWidth = $(window).width() - ($('header').offset().left + $('header').width() + gutter);
   var dimensions;
   if($('#backgroundImage').hasClass('studio')){
     var targetHeight = $(window).height() - 110;
@@ -385,6 +386,10 @@ function scaleBGImage() {
       return;
     }
     $('#backgroundImage img').width(dimensions[0]).height(dimensions[1]);
+    var rightOffset = targetWidth / 2 - dimensions[0]/2;
+    var topOffset = $(window).height() / 2 - dimensions[1]/2;
+    $('#backgroundImage img').css('margin-top', topOffset);
+    $('#backgroundImage img').css('margin-right', rightOffset);
   }
 }
 
